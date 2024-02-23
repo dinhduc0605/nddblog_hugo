@@ -2,7 +2,10 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>http://example.org/cung_nhau_tim_hieu_ve_continuous_integration/</loc><lastmod>2024-02-23T21:35:10&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/</loc><lastmod>2024-02-23T21:35:10&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/posts/</loc><lastmod>2024-02-23T21:35:10&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/ransack_cong_cu_tim_kiem_hieu_qua/</loc><lastmod>2024-02-23T21:22:41&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/loi_noi_dau/</loc><lastmod>2024-02-23T17:42:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://example.org/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
