@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/Users/dinhduc/Learning/hugo/nddblog",
+	"sourceRoot": "/Users/dinhduc/Learning/hugo/nddblog_hugo",
 	"sources": [
 		"themes/loveit/assets/css/style.scss",
 		"themes/loveit/assets/lib/normalize/normalize.css",

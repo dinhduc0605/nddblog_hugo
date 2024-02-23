@@ -3,11 +3,12 @@
         <title>All Posts - My New Hugo Site</title>
         <link>http://localhost:1313/posts/</link>
         <description>All Posts | My New Hugo Site</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Lời nói đầu</title>
     <link>http://localhost:1313/loi_noi_dau/</link>
     <pubDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</pubDate>
-    <author>xxxx</author>
+    <author>Dinh Duc</author>
     <guid>http://localhost:1313/loi_noi_dau/</guid>
     <description><![CDATA[Xin chào các bạn, mình là Đức, người tạo ra NDDBlog này. Chắc hẳn nhìn tên là các bạn đã hiểu vì sao blog này lại có tên như vậy rồi nhỉ &#x1f604;.
 Đây là bài viết đầu tiên, vì vậy mình muốn giới thiệu bản thân 1 chút và lý do vì sao blog này ra đời.
