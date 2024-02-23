@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>My New Hugo Site</title>
+        <link>http://localhost:1313/</link>
+        <description>This is my cool site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</lastBuildDate>
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Lời nói đầu</title>
+    <link>http://localhost:1313/loi_noi_dau/</link>
+    <pubDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</pubDate>
+    <author>xxxx</author>
+    <guid>http://localhost:1313/loi_noi_dau/</guid>
+    <description><![CDATA[Xin chào các bạn, mình là Đức, người tạo ra NDDBlog này. Chắc hẳn nhìn tên là các bạn đã hiểu vì sao blog này lại có tên như vậy rồi nhỉ &#x1f604;.
+Đây là bài viết đầu tiên, vì vậy mình muốn giới thiệu bản thân 1 chút và lý do vì sao blog này ra đời.
+Mình tốt nghiệp đại học Bách Khoa Hà Nội tháng 7/2017. Sau đó thì mình ở nhà học tiếng Nhật và tìm kiếm công việc bên Nhật.]]></description>
+</item>
+</channel>
+</rss>
