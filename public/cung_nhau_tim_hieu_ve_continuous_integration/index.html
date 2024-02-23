@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Cùng nhau tìm hiểu về Continuous Integration - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Cùng nhau tìm hiểu về Continuous Integration" />
+<meta property="og:description" content="Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé &#x1f60b;.
+1. Continuous Integration là? Continuous Integration là cách thức phát triển phần mềm DevOps, trong đó các lập trình viên thường xuyên merge ( hay commit ) code của họ vào các central repo ( như github, gitlab&hellip; ), sau đó những đoạn code sẽ được build và test 1 cách tự động." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-23T21:32:29+09:00" />
+<meta property="article:modified_time" content="2024-02-23T21:32:29+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="Cùng nhau tìm hiểu về Continuous Integration"/>
+<meta name="twitter:description" content="Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé &#x1f60b;.
+1. Continuous Integration là? Continuous Integration là cách thức phát triển phần mềm DevOps, trong đó các lập trình viên thường xuyên merge ( hay commit ) code của họ vào các central repo ( như github, gitlab&hellip; ), sau đó những đoạn code sẽ được build và test 1 cách tự động."/>
+<meta name="application-name" content="NDDBlog">
+<meta name="apple-mobile-web-app-title" content="NDDBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/" /><link rel="prev" href="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cùng nhau tìm hiểu về Continuous Integration",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/cung_nhau_tim_hieu_ve_continuous_integration\/"
+        },"genre": "posts","wordcount":  1033 ,
+        "url": "http:\/\/localhost:1313\/cung_nhau_tim_hieu_ve_continuous_integration\/","datePublished": "2024-02-23T21:32:29+09:00","dateModified": "2024-02-23T21:32:29+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Dinh Duc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">NDDBlog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">NDDBlog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Cùng nhau tìm hiểu về Continuous Integration</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Dinh Duc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-23">2024-02-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1033 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé &#x1f60b;.</p>
+<h1 id="1-continuous-integration-là">1. Continuous Integration là?</h1>
+<p>Continuous Integration là cách thức phát triển phần mềm DevOps, trong đó các lập trình viên thường xuyên merge ( hay commit ) code của họ vào các central repo ( như github, gitlab&hellip; ), sau đó những đoạn code sẽ được build và test 1 cách tự động. CI thường là nói đến giai đoạn build và tích hợp đoạn code mới vào quá trình release của phần mềm.</p>
+<h1 id="2-tại-sao-lại-cần-continuous-integration">2. Tại sao lại cần Continuous Integration?</h1>
+<p>Thông thường, các lập trình viên thường làm việc độc lập trong 1 thời gian dài và chỉ merge code vào nhánh master khi họ đã hoàn thành công việc. Chưa kể đến sau khi merge còn cần phải chờ review, có khi phải đợi đến vài ngày hay cả tuần. Điều này dẫn đến việc merge code gặp khó khăn, tiêu tốn nhiều thời gian, và đồng thời cũng tạo ra nhiều bugs, conflicts&hellip; khi mà code không được cập nhật trong thời gian dài.</p>
+<p>CI giúp tìm ra bug ngay từ sớm trong quá trình phát triển, giúp việc sửa chữa tốn ít công sức hơn, từ đó cải thiện chất lượng phần mềm, giảm thời gian review code, đồng thời rút ngắn thời gian release các chức năng mới của sản phẩm. Việc test tự động được chạy với mỗi lần commit hay pull, đảm bảo nhánh master luôn trong trạng thái ổn định, không bug.</p>
+<h1 id="3-cách-thức-hoạt-động-của-continuous-integration">3. Cách thức hoạt động của Continuous Integration</h1>
+<p>Với continuos integration, lập trình viên thường sử dụng git để commit hay merge code của họ vào các central repo như GitHub, GitLab&hellip;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png"
+        data-srcset="https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png, https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png 1.5x, https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png 2x"
+        data-sizes="auto"
+        alt="https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png"
+        title="https://cdn-images-1.medium.com/max/800/0*Ibsu7Nvvd9gyhHxO.png" /></p>
+<p>Trên hình là 1 workflow phổ biến của CI. Thường thì mình sẽ thêm 1 bước là chạy test tại local trước, kiểm tra thật kỹ code của mình, khi xác định không có lỗi thì mới push lên. Làm như vậy sẽ giảm số lần test trên server, vì CI được dùng chung cho cả team, tài nguyên có hạn, nếu quá nhiều build cùng lúc thì sẽ có người phải chờ, và tất nhiên là chẳng ai muốn phải chờ rồi đúng không &#x1f602;. Hơn nữa việc đó cũng cho thấy bản thân là người cẩn thận, sẽ được đồng nghiệp đánh giá cao hơn &#x1f61c;. Sau khi push code lên, thông thường sẽ là gửi pull request vào nhánh master. Lúc này trên server sẽ tự động build và chạy test. Nếu như có lỗi xảy ra thì sẽ được thông báo cho các thành viên trong project, người chịu trách nhiệm cho pull đó ngay lập tức sửa code rồi push lên lần nữa, cứ lặp lại như vậy cho tới khi tất cả các test đều thành công. Tất nhiên đây chỉ là thông qua các test case đã được viết trước, còn về logic của đoạn code thì vẫn cần có người review, nếu ok thì lúc đó mới được merge vào nhánh master.</p>
+<h1 id="4-một-số-tool-continuos-integration-phổ-biến">4. Một số tool Continuos Integration phổ biến</h1>
+<ul>
+<li>
+<p><strong>Jenkins</strong>: Là công cụ mã nguồn mở được viết bằng java do Kohsuke Kawaguchi ( nhân viên của Sun Microsystem thời điểm đó ) viết ra. Jenkins nổi bật trong các công cụ CI ngoài yếu tố miễn phí thì còn nhờ tính linh hoạt, nhiều plugin có thể được tích hợp 1 cách dễ dàng.</p>
+</li>
+<li>
+<p><strong>TeamCity</strong>: Là công cụ CI server mạnh mẽ, được phát triển bởi công ty JetBrains, cái tên có lẽ không xa lạ gì với dân dev chúng ta. Công ty này có rất nhiều sản phẩm nổi tiếng như WebStorm, RubyMine, ReSharper&hellip;. TeamCity cung cấp đầy đủ tính năng cho phiên bản miễn phí nhưng giới hạn cho 100 lần build cấu hình ( tuỳ chỉnh config của CI ) và 3 build agents ( cho phép chạy song song 3 build cùng lúc ). Công cụ này chạy trên nhiều nền tảng và hỗ trợ nhiều công cụ cũng như framework khác nhau. Đồng thời cũng có lượng lớn plugins được phát triển bới JetBrains cũng như các bên thứ 3.</p>
+</li>
+<li>
+<p><strong>Travis CI</strong>: Là 1 trong những giải pháp máy chủ hosted CI lâu đời nhất và được mọi người tin dùng. Mặc dù thường được biết đến là giải pháp máy chủ lưu trữ ( hosted ), nhưng nó cũng cung cấp phiên bản dành cho các doanh nghiệp. Travis CI miễn phí cho tất cả các phần mềm mã nguồn mở được lưu trữ trên GitHub. Nhưng ngược lại nếu không phải thì chỉ được 100 build đầu tiên. Có 1 vài mức giá khác nhau có thể lựa chọn, khác biệt chủ yếu là số lượng build có thể chạy cùng lúc.</p>
+</li>
+<li>
+<p><strong>Circle CI</strong>: công cụ được phát triển bới công ty cùng tên, cung cấp dịch vụ cloud CI. Hiện nay Circle CI mới chỉ hộ trợ GitHub và 1 vài ngôn ngữ bao gồm Java, Ruby/Rails, Python, Node.js, PHP, Haskell, và Scala. Nhưng khác biệt chính của nó so với các công cụ khác là cách cung cấp dịch vụ. Giá tiền sẽ được tính theo các container, mỗi container có giá giống nhau và cố định. Container đầu tiên là miễn phí, không giới hạn số lượng project. Có 5 cấp độ build song song (1x, 4x, 8x, 12x và 16x). Hoặc cũng có thể chạy 4 builds trên 16 containers với tốc độ 4x.</p>
+</li>
+<li>
+<p>&hellip;</p>
+</li>
+</ul>
+<h1 id="5-link-tham-khảo">5. Link tham khảo</h1>
+<ul>
+<li><a href="https://aws.amazon.com/devops/continuous-integration/" target="_blank" rel="noopener noreffer ">https://aws.amazon.com/devops/continuous-integration/</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/devops/learn/what-is-continuous-integration" target="_blank" rel="noopener noreffer ">https://docs.microsoft.com/en-us/azure/devops/learn/what-is-continuous-integration</a></li>
+<li><a href="https://code-maze.com/top-8-continuous-integration-tools/" target="_blank" rel="noopener noreffer ">https://code-maze.com/top-8-continuous-integration-tools/</a></li>
+</ul>
+<h1 id="6-tổng-kết">6. Tổng kết</h1>
+<p>Vậy là qua bài viết này mình đã giới thiệu sơ qua về Continuous Integration,  cách thức phát triển phần mềm vô cùng hiệu quá. Đồng thời cũng đã liệt kê 1 số công cụ phổ biến hiện nay như Jenkins, Travis CI, Circle CI&hellip; Trong bài viết sau mình sẽ hướng dẫn các bạn cách config để sử dụng Circle CI trong Rails project. Mong mọi người đón đọc nhé  &#x1f601;.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-02-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/cung_nhau_tim_hieu_ve_continuous_integration/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/" data-title="Cùng nhau tìm hiểu về Continuous Integration"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/" data-title="Cùng nhau tìm hiểu về Continuous Integration"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/" data-title="Cùng nhau tìm hiểu về Continuous Integration"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/cung_nhau_tim_hieu_ve_continuous_integration/" data-title="Cùng nhau tìm hiểu về Continuous Integration"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/ransack_cong_cu_tim_kiem_hieu_qua/" class="prev" rel="prev" title="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about" target="_blank">Dinh Duc</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
