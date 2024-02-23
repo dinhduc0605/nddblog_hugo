@@ -4,7 +4,7 @@ baseURL = "http://example.org/"
 theme = "loveit"
 
 # website title
-title = "My New Hugo Site"
+title = "Nddblog"
 
 # language code ["en", "zh-CN", "fr", "pl", ...]
 languageCode = "en"
