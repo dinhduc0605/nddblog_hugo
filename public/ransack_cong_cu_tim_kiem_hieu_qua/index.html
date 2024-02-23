@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn - My New Hugo Site</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn" />
+<meta property="og:description" content="Kể từ bài viết trước cũng đã phải hơn 2 tháng rồi nhỉ, cứ mỗi lần động vào định viết gì đó mà không nghĩ ra gì là mình lại thôi &#x1f602;. Hôm nay phải cố gắng lắm mới ngồi được vào máy tính gõ ra vài dòng. Sau 1 hồi đắn đo suy nghĩ thì mình quyết định viết về những kiến thức cũng như kinh nghiệm đã học được từ khi đi làm đến giờ &#x1f60e;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-23T21:20:44+09:00" />
+<meta property="article:modified_time" content="2024-02-23T21:20:44+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn"/>
+<meta name="twitter:description" content="Kể từ bài viết trước cũng đã phải hơn 2 tháng rồi nhỉ, cứ mỗi lần động vào định viết gì đó mà không nghĩ ra gì là mình lại thôi &#x1f602;. Hôm nay phải cố gắng lắm mới ngồi được vào máy tính gõ ra vài dòng. Sau 1 hồi đắn đo suy nghĩ thì mình quyết định viết về những kiến thức cũng như kinh nghiệm đã học được từ khi đi làm đến giờ &#x1f60e;."/>
+<meta name="application-name" content="NDDBlog">
+<meta name="apple-mobile-web-app-title" content="NDDBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" /><link rel="prev" href="http://localhost:1313/loi_noi_dau/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/ransack_cong_cu_tim_kiem_hieu_qua\/"
+        },"genre": "posts","wordcount":  889 ,
+        "url": "http:\/\/localhost:1313\/ransack_cong_cu_tim_kiem_hieu_qua\/","datePublished": "2024-02-23T21:20:44+09:00","dateModified": "2024-02-23T21:20:44+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Dinh Duc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="My New Hugo Site">NDDBlog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="My New Hugo Site">NDDBlog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Dinh Duc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-23">2024-02-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;889 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Kể từ bài viết trước cũng đã phải hơn 2 tháng rồi nhỉ, cứ mỗi lần động vào định viết gì đó mà không nghĩ ra gì là mình lại thôi &#x1f602;. Hôm nay phải cố gắng lắm mới ngồi được vào máy tính gõ ra vài dòng. Sau 1 hồi đắn đo suy nghĩ thì mình quyết định viết về những kiến thức cũng như kinh nghiệm đã học được từ khi đi làm đến giờ &#x1f60e;.</p>
+<p>Trước đây mỗi lần cần tìm kiếm hay sắp xếp dữ liệu mình đều tự viết các câu query, tuy rằng rails cũng có sẵn những method như <code>where</code>, <code>find</code>, <code>order</code> &hellip; nhưng nhiều lúc vẫn khá là vất vả, nhất là khi phải query qua nhiều thuộc tính. Gần đây mới biết thêm 1 gem rất thú vị là Ransack - giúp giải quyết vấn đề tìm kiếm và sắp xếp 1 cách nhanh chóng và hiệu quả &#x1f60d;. Trong bài này mình sẽ giới thiệu sơ qua cách cài đặt cũng như cách sử dụng gem này.</p>
+<h1 id="cài-đặt">Cài đặt</h1>
+<p>Ransack tương thích với Rails 5.0, 5.1 và 5.2 và phiên bản Ruby từ sau 2.2. Nếu bạn sử dụng Rails &lt; 5.0 thì hãy dùng ruby 1.8. Nếu như với ruby 1.8 hay JRuby mà gặp phải vấn đề, hãy sử dụng các phiên bản trước của Ransack (từ 1.3.0 trở xuống).</p>
+<p>Để cài đặt bạn thêm dòng sau vào Gemfile</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">gem</span> <span class="s1">&#39;ransack&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nếu các bạn muốn sử dụng phiên bản mới nhất thì hãy sử dụng nhánh <strong>master</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">gem</span> <span class="s1">&#39;ransack&#39;</span><span class="p">,</span> <span class="ss">github</span><span class="p">:</span> <span class="s1">&#39;activerecord-hackery/ransack&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="cách-sử-dụng">Cách sử dụng</h1>
+<p><strong>Trong controller</strong></p>
+<p>Method <code>ransack</code> dùng để tìm kiếm dữ trong database dựa vào các điều kiện được truyền từ <code>params[:q]</code>, sau đó kết quả được lấy ra thông qua method <code>result</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">index</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@q</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">ransack</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:q</span><span class="o">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="vi">@people</span> <span class="o">=</span> <span class="vi">@q</span><span class="o">.</span><span class="n">result</span><span class="p">(</span><span class="ss">distinct</span><span class="p">:</span> <span class="kp">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Khi dùng với pagination như <code>kaminari</code> thì không thể dùng <code>distinct: true</code>, nên hãy sử dụng <code>.to_a.uniq</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="vi">@people</span> <span class="o">=</span> <span class="vi">@q</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:articles</span><span class="p">)</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">uniq</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Trong view</strong></p>
+<p>2 helper method chính là <code>search_form_for</code> và <code>sort_link</code>, được định nghĩa trong <a href="https://github.com/activerecord-hackery/ransack/blob/master/lib/ransack/helpers/form_helper.rb" target="_blank" rel="noopener noreffer ">Ransack::Helpers::FormHelper</a>.</p>
+<p><strong><code>search_form_for</code> thay thế cho <code>form_for</code> để tạo search form trong view với tham số đầu mặc định là q ( params[:q] )</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">search_form_for</span> <span class="o">@</span><span class="nx">q</span> <span class="k">do</span> <span class="o">|</span><span class="nx">f</span><span class="o">|</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Tìm các phần tử có thuộc tính name chứa...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">label</span> <span class="o">:</span><span class="nx">name_cont</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">search_field</span> <span class="o">:</span><span class="nx">name_cont</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Tìm các phần tử nếu trong các articles liên kết tồn tại article có title chứa...
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">label</span> <span class="o">:</span><span class="nx">articles_title_start</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">search_field</span> <span class="o">:</span><span class="nx">articles_title_start</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># Các thuộc tính có thể được nối liền và được tìm kiếm với 1 giá trị duy nhất.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">label</span> <span class="o">:</span><span class="nx">name_or_description_or_email_or_articles_title_cont</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">search_field</span> <span class="o">:</span><span class="nx">name_or_description_or_email_or_articles_title_cont</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;%=</span> <span class="nx">f</span><span class="o">.</span><span class="nx">submit</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&lt;%</span> <span class="nx">end</span> <span class="o">%&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Tham số của <code>f.search_field phải</code> được viết dưới dạng như sau: <code>attribute_name[_or_attribute_name]..._predicate</code>. Trong đó <code>attribute_name</code> là tên trường ( thuộc tính ) của model, <code>_or_</code> là kết hợp thêm dữ liệu của trường ( thuộc tính ) khác, còn <code>_predicate</code> là <code>cont</code> ( chứa ), <code>start</code> ( bắt đầu với )&hellip; Như ví dụ ở trên <code>name_or_description_or_email_or_articles_title_cont</code> tức là tìm các Person có name hoặc description hoặc email hoặc ( tồn tại article trong các articles liên kết có title ) chứa chuỗi được nhập vào form.</p>
+<p>Để truyền format ta làm như sau:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">search_form_for</span><span class="p">(</span><span class="o">@</span><span class="nx">q</span><span class="p">,</span> <span class="nx">format</span><span class="o">:</span> <span class="o">:</span><span class="nx">pdf</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="nx">f</span><span class="o">|</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">search_form_for</span><span class="p">(</span><span class="o">@</span><span class="nx">q</span><span class="p">,</span> <span class="nx">format</span><span class="o">:</span> <span class="o">:</span><span class="nx">json</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="nx">f</span><span class="o">|</span> <span class="o">%&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong><code>sort_link</code> giúp header của các table có thế sắp xếp theo thứ tự tùy theo từng loại dữ liệu ( text, date,&hellip; )</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">sort_link</span><span class="p">(</span><span class="o">@</span><span class="nx">q</span><span class="p">,</span> <span class="o">:</span><span class="nx">name</span><span class="p">)</span> <span class="o">%&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Có thể truyền thêm các tham số khác như tên header, kiểu sắp xếp mặc định:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">sort_link</span><span class="p">(</span><span class="o">@</span><span class="nx">q</span><span class="p">,</span> <span class="o">:</span><span class="nx">name</span><span class="p">,</span> <span class="s1">&#39;Last Name&#39;</span><span class="p">,</span> <span class="nx">default_order</span><span class="o">:</span> <span class="o">:</span><span class="nx">desc</span><span class="p">)</span> <span class="o">%&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Sắp xếp với nhiều trường khác nhau:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">sort_link</span><span class="p">(</span><span class="o">@</span><span class="nx">q</span><span class="p">,</span> <span class="o">:</span><span class="nx">last_name</span><span class="p">,</span> <span class="p">[</span><span class="o">:</span><span class="nx">last_name</span><span class="p">,</span> <span class="s1">&#39;first_name asc&#39;</span><span class="p">],</span> <span class="s1">&#39;Last Name&#39;</span><span class="p">)</span> <span class="o">%&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Như ví dụ trên, đầu tiên sẽ xếp theo <code>last_name</code> rồi đến <code>first_name</code>.</p>
+<p>Trong trường hợp bạn muốn sắp xếp theo các giá trị phức tạp, như kết quả của 1 lệnh SQL bạn có thể dùng scope. Trong model bạn định nghĩa scope với các thuộc tính ảo mà bạn muốn dùng để sắp xếp:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span></span><span class="line"><span class="cl">  <span class="n">scope</span> <span class="ss">:sort_by_reverse_name_asc</span><span class="p">,</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="s2">&#34;REVERSE(name) ASC&#34;</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">scope</span> <span class="ss">:sort_by_reverse_name_desc</span><span class="p">,</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="n">order</span><span class="p">(</span><span class="s2">&#34;REVERSE(name) DESC&#34;</span><span class="p">)</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">...</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>sau đó sử dụng trong view như sau:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;%=</span> <span class="nx">sort_link</span><span class="p">(</span><span class="o">@</span><span class="nx">q</span><span class="p">,</span> <span class="o">:</span><span class="nx">reverse_name</span><span class="p">)</span> <span class="o">%&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>sort_link</code> khi render trên view sẽ được hiển thị với 1 mũi tên bên cạnh, để tùy chỉnh lại mũi tên này ( màu sắc, kích thước&hellip; ) bạn có thể tùy chỉnh trong  <code>config/initializers/ransack.rb</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="no">Ransack</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">.</span><span class="n">custom_arrows</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">up_arrow</span><span class="p">:</span> <span class="s1">&#39;&lt;i class=&#34;custom-up-arrow-icon&#34;&gt;&lt;/i&gt;&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">down_arrow</span><span class="p">:</span> <span class="s1">&#39;U+02193&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="ss">default_arrow</span><span class="p">:</span> <span class="s1">&#39;&lt;i class=&#34;default-arrow-icon&#34;&gt;&lt;/i&gt;&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Như vậy là ở trên mình đã giới thiệu sơ qua cách sử dụng gem Ransack, đây chỉ là những ví dụ cũng như cách sử dụng cơ bản nhất. Để hiểu thêm về gem này các bạn có thể tham khảo tại <a href="https://github.com/activerecord-hackery/ransack" target="_blank" rel="noopener noreffer ">Ransack GitHub</a>.</p>
+<p>Định viết thêm phần cuối kinh nghiệm khi sử dụng Ransack mà tại dùng cũng lâu rồi không nhớ ra cái nào hay để viết, đành tạm bỏ trống  sau này có thì thêm vào vậy &#x1f614;.</p>
+<h1 id="kinh-nghiệm-khi-dùng-ransack">Kinh nghiệm khi dùng Ransack</h1>
+<ul>
+<li>Comming soon.</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-02-23</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/ransack_cong_cu_tim_kiem_hieu_qua/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" data-title="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" data-title="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" data-title="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/" data-title="Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/loi_noi_dau/" class="prev" rel="prev" title="Lời nói đầu"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Lời nói đầu</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about" target="_blank">Dinh Duc</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

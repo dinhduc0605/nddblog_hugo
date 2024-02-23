@@ -4,9 +4,17 @@
         <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Fri, 23 Feb 2024 21:20:44 &#43;0900</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn</title>
+    <link>http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/</link>
+    <pubDate>Fri, 23 Feb 2024 21:20:44 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/ransack_cong_cu_tim_kiem_hieu_qua/</guid>
+    <description><![CDATA[Kể từ bài viết trước cũng đã phải hơn 2 tháng rồi nhỉ, cứ mỗi lần động vào định viết gì đó mà không nghĩ ra gì là mình lại thôi &#x1f602;. Hôm nay phải cố gắng lắm mới ngồi được vào máy tính gõ ra vài dòng. Sau 1 hồi đắn đo suy nghĩ thì mình quyết định viết về những kiến thức cũng như kinh nghiệm đã học được từ khi đi làm đến giờ &#x1f60e;.]]></description>
+</item>
+<item>
     <title>Lời nói đầu</title>
     <link>http://localhost:1313/loi_noi_dau/</link>
     <pubDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</pubDate>
