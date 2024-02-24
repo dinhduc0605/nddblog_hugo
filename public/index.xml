@@ -4,9 +4,17 @@
         <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:10:19 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:18:28 &#43;0900</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Cách đỗ Ruby bạc trong 3 tuần</title>
+    <link>http://localhost:1313/posts/cach_do_ruby_bac_trong_3_tuan/</link>
+    <pubDate>Sat, 24 Feb 2024 22:18:28 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/cach_do_ruby_bac_trong_3_tuan/</guid>
+    <description><![CDATA[Tuần trước mình có đi thi Ruby bạc, may mắn là đã đỗ và điểm số cũng không tệ lắm &#x1f60e;. Vì vậy hôm nay mình viết bài này để chia sẻ với mọi người cách học của mình để thi đỗ trong vòng 3 tuần. Tất nhiên thời gian này cũng chỉ là tương đối, phải dựa trên khả năng của từng người nữa. Nhưng ở đây mình giả sử các bạn đã có kiến thức căn bản về Ruby rồi nhé.]]></description>
+</item>
+<item>
     <title>Các câu lệnh hữu ích khi làm việc với PostgreSQL</title>
     <link>http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/</link>
     <pubDate>Sat, 24 Feb 2024 22:10:19 &#43;0900</pubDate>
