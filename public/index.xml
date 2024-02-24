@@ -4,9 +4,17 @@
         <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:18:28 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:22:42 &#43;0900</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Cách tạo nhiều cơ sở dữ liệu trên CircleCI</title>
+    <link>http://localhost:1313/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</link>
+    <pubDate>Sat, 24 Feb 2024 22:22:42 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</guid>
+    <description><![CDATA[Thông thường các hệ thống chỉ có cơ sở dữ liệu (CSDL) của chính nó, nhưng với các hệ thống phức tạp hơn, liên kết với các hệ thống khác thì nhiều khi sẽ phải truy cập trực tiếp vào các CSDL bên ngoài để lấy thông tin. Trên CircleCI, để tạo CSDL của chính hệ thống ta chỉ cần gọi bundle exec rake db:create và bundle exec rake db:migrate (ở đây mình giả sử các bạn sử dụng Rails) là tất cả các bảng sẽ tự động được tạo ra.]]></description>
+</item>
+<item>
     <title>Cách đỗ Ruby bạc trong 3 tuần</title>
     <link>http://localhost:1313/posts/cach_do_ruby_bac_trong_3_tuan/</link>
     <pubDate>Sat, 24 Feb 2024 22:18:28 &#43;0900</pubDate>
