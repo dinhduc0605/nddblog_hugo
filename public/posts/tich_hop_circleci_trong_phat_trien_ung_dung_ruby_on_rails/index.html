@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails - Nddblog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails" />
+<meta property="og:description" content="Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
+1. Đăng ký tài khoản Bước đầu tiên các bạn cần đăng ký tài khoản của CircleCI. Hiện tại công cụ này chỉ hỗ trợ đăng ký bằng tài khoản Github hoặc Bitbucket:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-24T13:29:35+09:00" />
+<meta property="article:modified_time" content="2024-02-24T13:29:35+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails"/>
+<meta name="twitter:description" content="Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
+1. Đăng ký tài khoản Bước đầu tiên các bạn cần đăng ký tài khoản của CircleCI. Hiện tại công cụ này chỉ hỗ trợ đăng ký bằng tài khoản Github hoặc Bitbucket:"/>
+<meta name="application-name" content="NDDBlog">
+<meta name="apple-mobile-web-app-title" content="NDDBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/" /><link rel="prev" href="http://localhost:1313/posts/cung_nhau_tim_hieu_ve_continuous_integration/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails\/"
+        },"genre": "posts","wordcount":  1001 ,
+        "url": "http:\/\/localhost:1313\/posts\/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails\/","datePublished": "2024-02-24T13:29:35+09:00","dateModified": "2024-02-24T13:29:35+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Dinh Duc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nddblog">NDDBlog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nddblog">NDDBlog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Dinh Duc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-24">2024-02-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1001 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/circleci.png"
+        data-srcset="/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/circleci.png, /posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/circleci.png 1.5x, /posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/circleci.png 2x"
+        data-sizes="auto"
+        alt="/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/circleci.png"
+        title="/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/circleci.png" width="1024" height="536" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Trong bài viết trước chúng ta đã <a href="/posts/cung_nhau_tim_hieu_ve_continuous_integration/" rel="">Cùng nhau tìm hiểu về Continuous Integration</a>. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.</p>
+<h1 id="1-đăng-ký-tài-khoản">1. Đăng ký tài khoản</h1>
+<p>Bước đầu tiên các bạn cần đăng ký tài khoản của CircleCI. Hiện tại công cụ này chỉ hỗ trợ đăng ký bằng tài khoản Github hoặc Bitbucket:</p>
+<ul>
+<li>Truy cập trang đăng ký <a href="https://circleci.com/signup/" target="_blank" rel="noopener noreffer ">https://circleci.com/signup/</a></li>
+<li>Chọn đăng ký bằng Github hoặc Bitbucket.</li>
+<li>Điền thông tin username, password và xác nhận bảo mật 2 lớp (nếu có) rồi chọn đăng nhập.</li>
+<li>Sau khi chọn Authorize Application thì Dashboard của CircleCI sẽ hiện ra.</li>
+</ul>
+<p>Đến đây các bạn đã tạo tài khoản thành công, nhưng để bắt đầu thì còn phải config trong Rails để CircleCI có thể nhận diện và thực thi công việc theo yêu cầu.</p>
+<h1 id="2-config-circleci-trong-rails">2. Config CircleCI trong Rails</h1>
+<p>Trong project tạo thư mục tên là <code>.circleci</code>, và tạo file <code>config.yml</code> ( như vậy filepath sẽ là <code>.circleci/config.yml</code> ). Về nội dung của file config.yml thì tuỳ từng project, từng công việc ta muốn CircleCI thực hiện mà sẽ khác nhau, vì vậy trong bài này mình sẽ lấy file config.yml của <code>nddblog</code> làm ví dụ &#x1f601;.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># Ruby CircleCI 2.0 configuration file  
+</span></span></span><span class="line"><span class="cl"><span class="c1">#  
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Check https://circleci.com/docs/2.0/language-ruby/ for more details  
+</span></span></span><span class="line"><span class="cl"><span class="c1">#  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">version</span><span class="o">:</span> <span class="mi">2</span>  
+</span></span><span class="line"><span class="cl"><span class="nx">jobs</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">  <span class="nx">build</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">   <span class="nx">docker</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">   <span class="c1"># specify the version you desire here  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>   <span class="o">-</span> <span class="nx">image</span><span class="o">:</span> <span class="nx">circleci</span><span class="o">/</span><span class="nx">ruby</span><span class="o">:</span><span class="mf">2.5</span><span class="o">.</span><span class="mi">3</span><span class="o">-</span><span class="nx">node</span><span class="o">-</span><span class="nx">browsers</span>  
+</span></span><span class="line"><span class="cl">       <span class="nx">environment</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">         <span class="nx">RAILS_ENV</span><span class="o">:</span> <span class="nx">test</span>   
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">    <span class="c1"># Specify service dependencies here if necessary  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># CircleCI maintains a library of pre-built images 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1"># documented at https://circleci.com/docs/2.0/circleci-images/  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-</span> <span class="nx">image</span><span class="o">:</span> <span class="nx">circleci</span><span class="o">/</span><span class="nx">postgres</span><span class="o">:</span><span class="mf">10.6</span>  
+</span></span><span class="line"><span class="cl">       <span class="nx">environment</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">         <span class="nx">POSTGRES_USER</span><span class="o">:</span> <span class="nx">dinhduc</span>  
+</span></span><span class="line"><span class="cl">   
+</span></span><span class="line"><span class="cl">    <span class="nx">working_directory</span><span class="o">:</span> <span class="o">~/</span><span class="nx">repo</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="nx">steps</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="nx">checkout</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="c1"># Download and cache dependencies  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-</span> <span class="nx">restore_cache</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">keys</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">-</span> <span class="nx">v1</span><span class="o">-</span><span class="nx">dependencies</span><span class="o">-</span><span class="p">{{</span> <span class="nx">checksum</span> <span class="s2">&#34;Gemfile.lock&#34;</span> <span class="p">}}</span>  
+</span></span><span class="line"><span class="cl">        <span class="c1"># fallback to using the latest cache if no exact match is found  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="o">-</span> <span class="nx">v1</span><span class="o">-</span><span class="nx">dependencies</span><span class="o">-</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="nx">run</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="nx">install</span> <span class="nx">dependencies</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">command</span><span class="o">:</span> <span class="o">|</span>  
+</span></span><span class="line"><span class="cl">          <span class="nx">bundle</span> <span class="nx">install</span> <span class="o">--</span><span class="nx">jobs</span><span class="o">=</span><span class="mi">4</span> <span class="o">--</span><span class="nx">retry</span><span class="o">=</span><span class="mi">3</span> <span class="o">--</span><span class="nx">path</span> <span class="nx">vendor</span><span class="o">/</span><span class="nx">bundle</span>  
+</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="nx">save_cache</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">paths</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="o">-</span> <span class="o">./</span><span class="nx">vendor</span><span class="o">/</span><span class="nx">bundle</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">key</span><span class="o">:</span> <span class="nx">v1</span><span class="o">-</span><span class="nx">dependencies</span><span class="o">-</span><span class="p">{{</span> <span class="nx">checksum</span> <span class="s2">&#34;Gemfile.lock&#34;</span> <span class="p">}}</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="c1"># Database setup  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-</span> <span class="nx">run</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="nx">Set</span> <span class="nx">up</span> <span class="nx">DB</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">command</span><span class="o">:</span> <span class="o">|</span>  
+</span></span><span class="line"><span class="cl">          <span class="nx">bundle</span> <span class="nx">exec</span> <span class="nx">rake</span> <span class="nx">db</span><span class="o">:</span><span class="nx">create</span> 
+</span></span><span class="line"><span class="cl">          <span class="nx">bundle</span> <span class="nx">exec</span> <span class="nx">rake</span> <span class="nx">db</span><span class="o">:</span><span class="nx">migrate</span>  
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="c1"># Run rubocop  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-</span> <span class="nx">run</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="nx">Run</span> <span class="nx">rubocop</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">command</span><span class="o">:</span> <span class="nx">bundle</span> <span class="nx">exec</span> <span class="nx">rubocop</span>
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">    <span class="c1"># Run tests!  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-</span> <span class="nx">run</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">name</span><span class="o">:</span> <span class="nx">run</span> <span class="nx">tests</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">command</span><span class="o">:</span> <span class="o">|</span>  
+</span></span><span class="line"><span class="cl">		  <span class="nx">mkdir</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">test</span><span class="o">-</span><span class="nx">results</span> 
+</span></span><span class="line"><span class="cl">		  <span class="nx">TEST_FILES</span><span class="o">=</span><span class="s2">&#34;$(circleci tests glob &#39;spec/**/*_spec.rb&#39; | circleci tests split --split-by=timings)&#34;</span>  
+</span></span><span class="line"><span class="cl">          <span class="nx">bundle</span> <span class="nx">exec</span> <span class="nx">rspec</span> <span class="o">--</span><span class="nx">format</span> <span class="nx">progress</span> <span class="nx">\</span> <span class="o">--</span><span class="nx">format</span> <span class="nx">RspecJunitFormatter</span> <span class="nx">\</span> <span class="o">--</span><span class="nx">out</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">test</span><span class="o">-</span><span class="nx">results</span><span class="o">/</span><span class="nx">rspec</span><span class="o">.</span><span class="nx">xml</span> <span class="nx">\</span> <span class="o">--</span><span class="nx">format</span> <span class="nx">progress</span> <span class="nx">\</span> <span class="nv">$TEST_FILES</span>  
+</span></span><span class="line"><span class="cl">    <span class="c1"># collect reports  
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">-</span> <span class="nx">store_test_results</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">path</span><span class="o">:</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">test</span><span class="o">-</span><span class="nx">results</span>  
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="o">-</span> <span class="nx">store_artifacts</span><span class="o">:</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">path</span><span class="o">:</span> <span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">test</span><span class="o">-</span><span class="nx">results</span>  
+</span></span><span class="line"><span class="cl">        <span class="nx">destination</span><span class="o">:</span> <span class="nx">test</span><span class="o">-</span><span class="nx">results</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Mình sẽ giải thích từng phần để các bạn dễ hình dung nhé &#x1f609;.</p>
+<ul>
+<li><code>version</code>: version của CircleCI, hiện nay đã ra tới 2.1 nhưng trong project của mình vẫn là 2 thôi, chưa có thời gian update mà &#x1f625;</li>
+<li><code>jobs</code>: các job cần phải thực hiện mỗi khi build trên CircleCI.</li>
+<li><code>build</code>: tên job.</li>
+<li><code>docker</code>: là executor, nói đơn giản là nơi để thực hiện các job. Có 3 loại executor khác nhau: docker, machine và macos.</li>
+<li><code>image</code>: tên image sẽ được sử dụng trong docker, và những image này được lấy từ <a href="https://hub.docker.com/" target="_blank" rel="noopener noreffer ">dockerhub</a>. Trong <code>nddblog</code> mình sử dụng 2 image là ruby - dùng để chạy project và postgres - dùng để lưu trữ dữ liệu.</li>
+<li><code>environment</code>: các biến môi trường của từng image. <code>RAILS_ENV</code> cài đặt môi trường rails trên CircleCI là test. <code>POSTGRES_USER</code> cài đặt username cho database. Lưu ý username ở đây và trong file <code>config/database.yml</code> phải giống nhau.</li>
+<li><code>working_directory</code>: thư mục lưu trữ source code.</li>
+<li><code>steps</code>: các bước thực hiện trong job.</li>
+<li><code>checkout</code>: lấy code của nhánh đang build từ github hoặc bitbucket về.</li>
+<li><code>restore_cache</code>: restore các dependencies đã được cache từ lần build trước nếu có.</li>
+<li><code>run</code>: thực hiện các command line. Trong file mình có 4 lệnh run lần lượt là cài đặt các dependencies, tạo vào migrate database, chạy test rubocop và chạy rspec test. Nếu các bạn cần chạy lệnh nào khác có thể thêm thoải mái.</li>
+<li><code>save_cache</code>: lưu cache lại các dependencies.</li>
+<li><code>store_test_results</code>: lưu các kết quả test ra file để hiển thị trên CircleCI.</li>
+<li><code>store_artifacts</code>: lưu các kết quả của artifacts ra file để hiển thị trên CircleCI (artifacts là các file như file ảnh, logs, coverage reports&hellip;.).</li>
+</ul>
+<p>Trên đây mình đã giải thích những key quan trọng cần có của 1 file config.yml. Dựa vào đó chắc hẳn các bạn đã có thể tạo ra file riêng cho project của mình rồi nhỉ &#x270a;. Sau khi đã thêm file config.yml vào project thì hãy commit và push file đó lên repo của mình.</p>
+<h1 id="3-chọn-project-cần-build-trên-circleci">3. Chọn project cần build trên CircleCI</h1>
+<p>Tại Dashboard của CircleCI, các bạn chọn tab <code>Add Projects</code> , trong list hiện ra tiếp tục chọn Set Up Project tại project mà các bạn vừa mới push file config.yml lên. Sau đó sẽ có các bước hướng dẫn và file mẫu của config.yml nhưng nếu các bạn đã làm theo bước 2 như mình nói ở trên thì không cần làm thêm gì nữa mà chọn nút Start Building rồi ngồi chờ thành quả thôi &#x1f60b;. Chúc các bạn thành công và có được kết quả như hình dưới đây nhé &#x1f447;&#x1f447;&#x1f447;</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/5/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2018-12-30_23.11.41.png"
+        data-srcset="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/5/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2018-12-30_23.11.41.png, https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/5/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2018-12-30_23.11.41.png 1.5x, https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/5/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2018-12-30_23.11.41.png 2x"
+        data-sizes="auto"
+        alt="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/5/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2018-12-30_23.11.41.png"
+        title="CircleCI Success" /></p>
+<h1 id="4-tổng-kết">4. Tổng kết</h1>
+<p>Qua bài hôm này mình đã hướng dẫn các bạn cách tích hợp CircleCI trong việc phát triển ứng dụng với Ruby on Rails. Phần config có lẽ sẽ hơi khó hiểu nên để hiểu thêm về phần này các bạn có thể đọc thêm tại <a href="https://circleci.com/docs/2.0/configuration-reference/#section=configuration" target="_blank" rel="noopener noreffer ">Configuring CircleCI</a>. Mặc dù có chút khó khăn nhưng khi đã hoàn thành các bạn sẽ nhận ra sự tuyệt vời của CI. Tin mình đi ahihi &#x1f609;</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-02-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/" data-title="Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/" data-title="Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/" data-title="Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/" data-title="Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails" data-image="circleci.png"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cung_nhau_tim_hieu_ve_continuous_integration/" class="prev" rel="prev" title="Cùng nhau tìm hiểu về Continuous Integration"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Cùng nhau tìm hiểu về Continuous Integration</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about" target="_blank">Dinh Duc</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
