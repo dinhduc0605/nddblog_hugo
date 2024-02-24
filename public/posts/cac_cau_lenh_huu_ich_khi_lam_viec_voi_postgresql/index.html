@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Các câu lệnh hữu ích khi làm việc với PostgreSQL - Nddblog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Các câu lệnh hữu ích khi làm việc với PostgreSQL" />
+<meta property="og:description" content="Dạo này ở công ty mình hay được giao task lấy dữ liệu trực tiếp từ database theo yêu cầu của bên sale. Và để làm được thì tất nhiên là phải viết raw query rồi. Thực sự thì trước mình cũng chỉ mới nắm được các kiến thức cơ bản của SQL thôi chứ cũng chưa có nhiều cơ hội thực hành nên vẫn gà mờ lắm &#x1f62d;. Mới đầu để viết đc query thoả mãn các yêu cầu thì hầu như mình phải google liên tục, động vào cái gì cũng lơ mơ, rất là khó chịu và mất thời gian." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-24T22:10:19+09:00" />
+<meta property="article:modified_time" content="2024-02-24T22:10:19+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="Các câu lệnh hữu ích khi làm việc với PostgreSQL"/>
+<meta name="twitter:description" content="Dạo này ở công ty mình hay được giao task lấy dữ liệu trực tiếp từ database theo yêu cầu của bên sale. Và để làm được thì tất nhiên là phải viết raw query rồi. Thực sự thì trước mình cũng chỉ mới nắm được các kiến thức cơ bản của SQL thôi chứ cũng chưa có nhiều cơ hội thực hành nên vẫn gà mờ lắm &#x1f62d;. Mới đầu để viết đc query thoả mãn các yêu cầu thì hầu như mình phải google liên tục, động vào cái gì cũng lơ mơ, rất là khó chịu và mất thời gian."/>
+<meta name="application-name" content="NDDBlog">
+<meta name="apple-mobile-web-app-title" content="NDDBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/" /><link rel="prev" href="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Các câu lệnh hữu ích khi làm việc với PostgreSQL",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql\/"
+        },"genre": "posts","wordcount":  829 ,
+        "url": "http:\/\/localhost:1313\/posts\/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql\/","datePublished": "2024-02-24T22:10:19+09:00","dateModified": "2024-02-24T22:10:19+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Dinh Duc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nddblog">NDDBlog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nddblog">NDDBlog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Các câu lệnh hữu ích khi làm việc với PostgreSQL</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Dinh Duc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-24">2024-02-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;829 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/postgresql.png"
+        data-srcset="/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/postgresql.png, /posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/postgresql.png 1.5x, /posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/postgresql.png 2x"
+        data-sizes="auto"
+        alt="/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/postgresql.png"
+        title="/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/postgresql.png" width="1600" height="666" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-tìm-các-bài-viết-có-chứa-1-trong-nhiều-từ-khoá-ví-dụ-a-b-c">1. Tìm các bài viết có chứa 1 trong nhiều từ khoá, ví dụ <code>A</code> <code>B</code> <code>C</code></a></li>
+        <li><a href="#2-trích-xuất-tên-tất-cả-các-user-và-tên-bài-viết-gần-nhất-của-họ">2. Trích xuất tên tất cả các user và tên bài viết gần nhất của họ</a></li>
+        <li><a href="#3-kết-hợp-các-cột-với-nhau-thành-1-cột-với-">3. Kết hợp các cột với nhau thành 1 cột với <code>||</code></a></li>
+        <li><a href="#4-trích-xuất-các-bài-viết-theo-thời-gian-cùng-múi-giờ">4. Trích xuất các bài viết theo thời gian cùng múi giờ</a></li>
+        <li><a href="#5-kiểm-tra-1-hay-nhiều-giá-trị-có-nằm-trong-trường-định-dạng-array-hay-không">5. Kiểm tra 1 hay nhiều giá trị có nằm trong trường định dạng array hay không</a></li>
+        <li><a href="#6-lấy-tổng-số-lượng-trong-theo-từng-khoảng-thời-gian">6. Lấy tổng số lượng trong theo từng khoảng thời gian</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>Dạo này ở công ty mình hay được giao task lấy dữ liệu trực tiếp từ database theo yêu cầu của bên sale. Và để làm được thì tất nhiên là phải viết raw query rồi. Thực sự thì trước mình cũng chỉ mới nắm được các kiến thức cơ bản của SQL thôi chứ cũng chưa có nhiều cơ hội thực hành nên vẫn gà mờ lắm &#x1f62d;. Mới đầu để viết đc query thoả mãn các yêu cầu thì hầu như mình phải google liên tục, động vào cái gì cũng lơ mơ, rất là khó chịu và mất thời gian. Nhưng dần dần mình cũng quen hơn, nhớ được nhiều câu lệnh hơn, và cảm thấy việc viết SQL khá là thú vị &#x1f60c;. Mình nhận ra rằng học và nhớ được lý thuyết là 1 chuyện, còn để áp dụng nó vào thực tế lại 1 chuyện khác không hề đơn giản. Vì vậy trong bài viết này mình sẽ không đề cập đến các kiến thức về SQL mà sẽ tập trung vào các trường hợp cụ thể.</p>
+<p><strong>Lưu ý là các câu lệnh dưới đây đều được viết bằng PostgreSQL nhé, nên có thể sẽ không đúng đối với MySQL, SQLite&hellip;</strong></p>
+<p>Mình sẽ thực hiện truy vấn đối với các bảng như trong hình sau:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/11/Screen_Shot_2019-05-02_at_11.32.25.png"
+        data-srcset="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/11/Screen_Shot_2019-05-02_at_11.32.25.png, https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/11/Screen_Shot_2019-05-02_at_11.32.25.png 1.5x, https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/11/Screen_Shot_2019-05-02_at_11.32.25.png 2x"
+        data-sizes="auto"
+        alt="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/11/Screen_Shot_2019-05-02_at_11.32.25.png"
+        title="https://nddblog-prod.s3.amazonaws.com/uploads/image_file/image/11/Screen_Shot_2019-05-02_at_11.32.25.png" /></p>
+<h1 id="các-trường-hợp">Các trường hợp</h1>
+<h3 id="1-tìm-các-bài-viết-có-chứa-1-trong-nhiều-từ-khoá-ví-dụ-a-b-c">1. Tìm các bài viết có chứa 1 trong nhiều từ khoá, ví dụ <code>A</code> <code>B</code> <code>C</code></h3>
+<p>Thông thường cách đơn giản nhất là sử dụng <code>LIKE</code> nhiều lần với từng giá trị</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="o">*</span> <span class="nx">from</span> <span class="nx">posts</span>
+</span></span><span class="line"><span class="cl"><span class="nx">where</span> <span class="nx">content</span> <span class="nx">like</span> <span class="s1">&#39;%A%&#39;</span> <span class="k">or</span> <span class="nx">content</span> <span class="nx">like</span> <span class="s1">&#39;%B%&#39;</span> <span class="k">or</span> <span class="nx">content</span> <span class="nx">like</span> <span class="s1">&#39;%C%&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nhưng như vậy ta phải lặp lại <code>content LIKE</code> nhiều lần, rất là bất tiện. Những lúc như vậy ta có thể sử dụng từ khoá <code>SIMILAR TO</code> như sau</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="o">*</span> <span class="nx">from</span> <span class="nx">posts</span>
+</span></span><span class="line"><span class="cl"><span class="nx">where</span> <span class="nx">content</span> <span class="nx">similar</span> <span class="nx">to</span> <span class="s1">&#39;%(A|B|C)%&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-trích-xuất-tên-tất-cả-các-user-và-tên-bài-viết-gần-nhất-của-họ">2. Trích xuất tên tất cả các user và tên bài viết gần nhất của họ</h3>
+<p>Có 2 cách như sau</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="nx">u</span><span class="o">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">p</span><span class="o">.</span><span class="nx">title</span> <span class="nx">from</span> <span class="nx">users</span> <span class="nx">u</span>
+</span></span><span class="line"><span class="cl"><span class="nx">join</span> <span class="nx">posts</span> <span class="nx">p</span> <span class="nx">on</span> <span class="nx">p</span><span class="o">.</span><span class="nx">id</span> <span class="o">=</span> <span class="p">(</span><span class="nx">select</span> <span class="nx">max</span><span class="p">(</span><span class="nx">p2</span><span class="o">.</span><span class="nx">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">from</span> <span class="nx">posts</span> <span class="nx">p2</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">where</span> <span class="nx">p2</span><span class="o">.</span><span class="nx">user_id</span> <span class="o">=</span> <span class="nx">u</span><span class="o">.</span><span class="nx">id</span>
+</span></span><span class="line"><span class="cl">                        <span class="nx">group</span> <span class="nx">by</span> <span class="nx">p2</span><span class="o">.</span><span class="nx">user_id</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="nx">u</span><span class="o">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">p</span><span class="o">.</span><span class="nx">title</span> <span class="nx">from</span> <span class="nx">users</span> <span class="nx">u</span>
+</span></span><span class="line"><span class="cl"><span class="nx">join</span> <span class="nx">posts</span> <span class="nx">p</span> <span class="nx">on</span> <span class="nx">p</span><span class="o">.</span><span class="nx">user_id</span> <span class="o">=</span> <span class="nx">u</span><span class="o">.</span><span class="nx">id</span>
+</span></span><span class="line"><span class="cl"><span class="nx">left</span> <span class="nx">join</span> <span class="nx">posts</span> <span class="nx">p2</span> <span class="nx">on</span> <span class="nx">p2</span><span class="o">.</span><span class="nx">user_id</span> <span class="o">=</span> <span class="nx">u</span><span class="o">.</span><span class="nx">id</span> <span class="k">and</span> <span class="nx">p</span><span class="o">.</span><span class="nx">id</span> <span class="o">&lt;</span> <span class="nx">p2</span><span class="o">.</span><span class="nx">id</span>
+</span></span><span class="line"><span class="cl"><span class="nx">where</span> <span class="nx">p2</span><span class="o">.</span><span class="nx">id</span> <span class="nx">isnull</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-kết-hợp-các-cột-với-nhau-thành-1-cột-với-">3. Kết hợp các cột với nhau thành 1 cột với <code>||</code></h3>
+<p>Khi bạn muốn trích xuất dữ liệu gộp từ nhiều cột hay sử dụng toán tử <code>||</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="s1">&#39;Bài viết &#39;</span> <span class="o">||</span> <span class="nx">p</span><span class="o">.</span><span class="nx">title</span> <span class="o">||</span> <span class="s1">&#39; từ ngày &#39;</span> <span class="o">||</span> <span class="nx">p</span><span class="o">.</span><span class="nx">created_at</span><span class="o">::</span><span class="na">date</span>
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">posts</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Với câu lệnh trên ta sẽ lấy được những kết quả dạng như sau <code>Bài viết Các câu lệnh hữu ích khi làm việc với PostgreSQL từ ngày 2019-05-02</code></p>
+<h3 id="4-trích-xuất-các-bài-viết-theo-thời-gian-cùng-múi-giờ">4. Trích xuất các bài viết theo thời gian cùng múi giờ</h3>
+<p>Các database thường được lưu dưới múi giờ là 0, trong khi ở Nhật có múi giờ là +9. Vì vậy khi có các điều kiện liên quan đến thời gian ta cần chú ý cộng thêm 9 giờ để được kết quả chính xác. Trong ví dụ này ta sẽ lấy ra các bài viết được viết từ này 01/03/2019 đến ngày 01/04/2019</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">title</span>
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">posts</span>
+</span></span><span class="line"><span class="cl"><span class="nx">where</span> <span class="p">(</span><span class="nx">created_at</span> <span class="o">+</span> <span class="nx">interval</span> <span class="s1">&#39;9 hours&#39;</span><span class="p">)</span><span class="o">::</span><span class="na">date</span> <span class="nx">between</span> <span class="s1">&#39;2019-03-01&#39;</span> <span class="k">and</span> <span class="s1">&#39;2019-04-01&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ta sử dụng <code>interval</code> để cộng thêm 9 giờ vào <code>created_at</code> rồi dùng <code>::date</code> để ép kiểu từ <code>datetime</code> về <code>date</code> sau đó so sánh như bình thường.</p>
+<h3 id="5-kiểm-tra-1-hay-nhiều-giá-trị-có-nằm-trong-trường-định-dạng-array-hay-không">5. Kiểm tra 1 hay nhiều giá trị có nằm trong trường định dạng array hay không</h3>
+<p>Giả sửa trong bảng Post có trường like_user_ids dạng array, dùng để lưu id của những người đã like bài viết chẳng hạn. Để tìm những bài viết mà những user có id = 1, 2, 3&hellip; đã like ta sử dụng toán tử <code>@&gt;</code> như sau:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">title</span>
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">posts</span>
+</span></span><span class="line"><span class="cl"><span class="nx">where</span> <span class="nx">like_user_ids</span> <span class="o">@&gt;</span> <span class="k">Array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6-lấy-tổng-số-lượng-trong-theo-từng-khoảng-thời-gian">6. Lấy tổng số lượng trong theo từng khoảng thời gian</h3>
+<p>Trong trường hợp ta muốn lấy số bài được viết theo từng ngày thì nếu như thời gian ở định dạng <code>date</code> ta chỉ việc đơn giản là <code> group_by(date)</code> là xong, nhưng nếu là định dạng <code>timestamp</code> thì ta không thể group_by được vì khi đó thời gian được tính đến bằng giây. Vì vậy ta sẽ dùng <code>to_char</code> để đổi thời gian về dạng tháng rồi <code>group_by</code> theo dữ liệu đó.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">select</span> <span class="nx">to_char</span><span class="p">(</span><span class="nx">created_at</span><span class="p">,</span> <span class="s1">&#39;YYYY年MM月&#39;</span><span class="p">)</span> <span class="nx">monthly</span><span class="p">,</span> <span class="nx">count</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">count</span>
+</span></span><span class="line"><span class="cl"><span class="nx">from</span> <span class="nx">posts</span>
+</span></span><span class="line"><span class="cl"><span class="nx">where</span> <span class="nx">created_at</span> <span class="nx">between</span> <span class="s1">&#39;2019-01-01&#39;</span> <span class="k">and</span> <span class="s1">&#39;2019-05-31&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">group</span> <span class="nx">by</span> <span class="nx">monthly</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="tổng-kết">Tổng kết</h1>
+<p>Trên đây là 1 số ứng dụng trong các trường hợp cụ thể, hi vọng sẽ giúp ích cho các bạn trong những trường hợp tương tự. Mình sẽ cập nhật thêm các ví dụ khác dần dần, các bạn nhớ theo dõi bài viết này thường xuyên nhé &#x1f618;</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-02-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/" data-title="Các câu lệnh hữu ích khi làm việc với PostgreSQL"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/" data-title="Các câu lệnh hữu ích khi làm việc với PostgreSQL"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/" data-title="Các câu lệnh hữu ích khi làm việc với PostgreSQL"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/" data-title="Các câu lệnh hữu ích khi làm việc với PostgreSQL" data-image="postgresql.png"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/giai_quyet_van_de_n_plus_1_trong_rails/" class="prev" rel="prev" title="Giải quyết vấn đề N &#43; 1 queries trong Rails"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Giải quyết vấn đề N + 1 queries trong Rails</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about" target="_blank">Dinh Duc</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

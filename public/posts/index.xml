@@ -1,25 +1,35 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Nddblog</title>
-        <link>http://example.org/posts/</link>
+        <link>http://localhost:1313/posts/</link>
         <description>All Posts | Nddblog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</lastBuildDate><atom:link href="http://example.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:10:19 &#43;0900</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Các câu lệnh hữu ích khi làm việc với PostgreSQL</title>
+    <link>http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/</link>
+    <pubDate>Sat, 24 Feb 2024 22:10:19 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/postgresql.png" referrerpolicy="no-referrer">
+            </div>Dạo này ở công ty mình hay được giao task lấy dữ liệu trực tiếp từ database theo yêu cầu của bên sale. Và để làm được thì tất nhiên là phải viết raw query rồi. Thực sự thì trước mình cũng chỉ mới nắm được các kiến thức cơ bản của SQL thôi chứ cũng chưa có nhiều cơ hội thực hành nên vẫn gà mờ lắm &#x1f62d;. Mới đầu để viết đc query thoả mãn các yêu cầu thì hầu như mình phải google liên tục, động vào cái gì cũng lơ mơ, rất là khó chịu và mất thời gian.]]></description>
+</item>
+<item>
     <title>Giải quyết vấn đề N &#43; 1 queries trong Rails</title>
-    <link>http://example.org/posts/giai_quyet_van_de_n_plus_1_trong_rails/</link>
+    <link>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</link>
     <pubDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/giai_quyet_van_de_n_plus_1_trong_rails/</guid>
+    <guid>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/n_plus_1_problem.png" referrerpolicy="no-referrer">
             </div>Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác.]]></description>
 </item>
 <item>
     <title>Tận hưởng suối nước nóng tại Hakone</title>
-    <link>http://example.org/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</link>
+    <link>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</link>
     <pubDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</guid>
+    <guid>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/hakone.webp" referrerpolicy="no-referrer">
             </div>Đầu năm được bạn rủ đi Hakone chơi, có người quen mà cũng có người không quen nên lúc đầu cũng không biết nên đi hay không, cơ mà thôi trước lạ sau quen nên cuối cùng vẫn là cứ đi thôi &#x1f606;.
@@ -27,10 +37,10 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 </item>
 <item>
     <title>Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails</title>
-    <link>http://example.org/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</link>
+    <link>http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</link>
     <pubDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</guid>
+    <guid>http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/circleci.png" referrerpolicy="no-referrer">
             </div>Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
@@ -38,10 +48,10 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 </item>
 <item>
     <title>Cùng nhau tìm hiểu về Continuous Integration</title>
-    <link>http://example.org/posts/cung_nhau_tim_hieu_ve_continuous_integration/</link>
+    <link>http://localhost:1313/posts/cung_nhau_tim_hieu_ve_continuous_integration/</link>
     <pubDate>Fri, 23 Feb 2024 21:32:29 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/cung_nhau_tim_hieu_ve_continuous_integration/</guid>
+    <guid>http://localhost:1313/posts/cung_nhau_tim_hieu_ve_continuous_integration/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/continuous_integration.png" referrerpolicy="no-referrer">
             </div>Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé &#x1f60b;.
@@ -49,20 +59,20 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 </item>
 <item>
     <title>Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn</title>
-    <link>http://example.org/posts/ransack_cong_cu_tim_kiem_hieu_qua/</link>
+    <link>http://localhost:1313/posts/ransack_cong_cu_tim_kiem_hieu_qua/</link>
     <pubDate>Fri, 23 Feb 2024 21:20:44 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/ransack_cong_cu_tim_kiem_hieu_qua/</guid>
+    <guid>http://localhost:1313/posts/ransack_cong_cu_tim_kiem_hieu_qua/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/ransack.png" referrerpolicy="no-referrer">
             </div>Kể từ bài viết trước cũng đã phải hơn 2 tháng rồi nhỉ, cứ mỗi lần động vào định viết gì đó mà không nghĩ ra gì là mình lại thôi &#x1f602;. Hôm nay phải cố gắng lắm mới ngồi được vào máy tính gõ ra vài dòng. Sau 1 hồi đắn đo suy nghĩ thì mình quyết định viết về những kiến thức cũng như kinh nghiệm đã học được từ khi đi làm đến giờ &#x1f60e;.]]></description>
 </item>
 <item>
     <title>Lời nói đầu</title>
-    <link>http://example.org/posts/loi_noi_dau/</link>
+    <link>http://localhost:1313/posts/loi_noi_dau/</link>
     <pubDate>Fri, 23 Feb 2024 16:36:45 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/loi_noi_dau/</guid>
+    <guid>http://localhost:1313/posts/loi_noi_dau/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/let_me_introduce_myself.jpeg" referrerpolicy="no-referrer">
             </div>Xin chào các bạn, mình là Đức, người tạo ra NDDBlog này. Chắc hẳn nhìn tên là các bạn đã hiểu vì sao blog này lại có tên như vậy rồi nhỉ &#x1f604;.
