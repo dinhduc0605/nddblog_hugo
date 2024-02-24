@@ -4,9 +4,19 @@
         <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Giải quyết vấn đề N &#43; 1 queries trong Rails</title>
+    <link>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</link>
+    <pubDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/n_plus_1_problem.png" referrerpolicy="no-referrer">
+            </div>Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác.]]></description>
+</item>
+<item>
     <title>Tận hưởng suối nước nóng tại Hakone</title>
     <link>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</link>
     <pubDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</pubDate>

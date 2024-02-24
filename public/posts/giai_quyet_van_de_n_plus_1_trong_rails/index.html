@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Giải quyết vấn đề N &#43; 1 queries trong Rails - Nddblog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Giải quyết vấn đề N &#43; 1 queries trong Rails" />
+<meta property="og:description" content="Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" /><meta property="og:image" content="http://localhost:1313/logo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-02-24T21:59:06+09:00" />
+<meta property="article:modified_time" content="2024-02-24T21:59:06+09:00" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="http://localhost:1313/logo.png" /><meta name="twitter:title" content="Giải quyết vấn đề N &#43; 1 queries trong Rails"/>
+<meta name="twitter:description" content="Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác."/>
+<meta name="application-name" content="NDDBlog">
+<meta name="apple-mobile-web-app-title" content="NDDBlog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" /><link rel="prev" href="http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Giải quyết vấn đề N + 1 queries trong Rails",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/posts\/giai_quyet_van_de_n_plus_1_trong_rails\/"
+        },"genre": "posts","wordcount":  1788 ,
+        "url": "http:\/\/localhost:1313\/posts\/giai_quyet_van_de_n_plus_1_trong_rails\/","datePublished": "2024-02-24T21:59:06+09:00","dateModified": "2024-02-24T21:59:06+09:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Dinh Duc"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Nddblog">NDDBlog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Nddblog">NDDBlog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Giải quyết vấn đề N + 1 queries trong Rails</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Dinh Duc</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-02-24">2024-02-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1788 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/giai_quyet_van_de_n_plus_1_trong_rails/n_plus_1_problem.png"
+        data-srcset="/posts/giai_quyet_van_de_n_plus_1_trong_rails/n_plus_1_problem.png, /posts/giai_quyet_van_de_n_plus_1_trong_rails/n_plus_1_problem.png 1.5x, /posts/giai_quyet_van_de_n_plus_1_trong_rails/n_plus_1_problem.png 2x"
+        data-sizes="auto"
+        alt="/posts/giai_quyet_van_de_n_plus_1_trong_rails/n_plus_1_problem.png"
+        title="/posts/giai_quyet_van_de_n_plus_1_trong_rails/n_plus_1_problem.png" width="1400" height="788" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><p>Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác. Để hiểu sâu về Rails ta cũng cần phải đầu tư thời gian nhiều như những ngôn ngữ và framework khác. Chúng ta không thể mong đợi rằng các vấn đề sẽ tự nhiên biến mất chỉ vì chuyển sang dùng 1 công cụ nhanh hơn. 1 thuật toán chạy chậm trong C++ thì hẳn nhiên nó cũng chạy chậm trong Ruby &#x1f614;.</p>
+<p>Trong Rails khi nói đến cải thiện hiệu năng thì có rất nhiều khía cạnh cần quan tâm, trong đó đặc biệt phải nói đến là việc truy vấn đến database. Và vấn đề mà anh em chúng ta thường mắc phải (không biết hoặc biết mà bỏ qua), đó là các N + 1 queries .</p>
+<h1 id="n--1-queries-là-gì">N + 1 queries là gì?</h1>
+<p>Để hiểu rõ về vấn đề này thì mình sẽ dùng ví dụ sau để các bạn dễ hình dung:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Category</span> <span class="o">&lt;</span> <span class="nx">ActiveRecord</span><span class="o">::</span><span class="na">Base</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">has_many</span> <span class="o">:</span><span class="nx">posts</span>
+</span></span><span class="line"><span class="cl"><span class="nx">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Post</span> <span class="o">&lt;</span> <span class="nx">ActiveRecord</span><span class="o">::</span><span class="na">Base</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">belongs_to</span> <span class="o">:</span><span class="nx">category</span>
+</span></span><span class="line"><span class="cl"><span class="nx">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Đây là ví dụ khá điển hình khi làm 1 trang blog, bạn có 2 class là <code>Category</code> và <code>Post</code> có mối quan hệ như trên. Giả sử khi muốn hiển thị tên category của 5 bài đăng gần đây nhất ta thường làm như sau:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># Tại controller
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Tại View
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span><span class="o">.</span><span class="nx">each</span> <span class="k">do</span> <span class="o">|</span><span class="nx">post</span><span class="o">|</span>
+</span></span><span class="line"><span class="cl">	<span class="o">&lt;%=</span> <span class="nx">post</span><span class="o">.</span><span class="nx">category</span><span class="o">.</span><span class="nx">name</span> <span class="o">%&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nhìn qua thì có vẻ như không có vấn đề gì nhưng khi kiểm tra trên cosole ta sẽ thấy các query được sinh ra như sau:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">Post</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.5</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;posts&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;posts&#34;</span> <span class="nx">ORDER</span> <span class="nx">BY</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="nx">ASC</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">1</span>  <span class="p">[[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.3</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="err">$</span><span class="mi">1</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">2</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.2</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="err">$</span><span class="mi">1</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">2</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.2</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="err">$</span><span class="mi">1</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">2</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.2</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="err">$</span><span class="mi">1</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">2</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.2</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="err">$</span><span class="mi">1</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">2</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Rails mặc định với cơ chế <a href="https://rubyinrails.com/2014/01/08/what-is-lazy-loading-in-rails/" target="_blank" rel="noopener noreffer ">lazy-load</a>, tức là ứng dụng sẽ chỉ truy vấn tới database khi dữ liệu được yêu cầu như là khi sử dụng các lệnh <strong>all, first, count, each</strong>. Vì vậy khi ta gọi lệnh <code>each</code> ở đoạn code trên, đầu tiên ứng dụng sẽ query tới 5 bài post gần nhất (1 query). Rồi trong mỗi vòng lặp lại query tới từng category tương ứng của các bài post (5 query). Tổng lại ta có 6 (5 + 1) query, đó là lý do tại sao được gọi là vấn đề n + 1 query.</p>
+<p>Với ví dụ này, số lượng query vẫn còn ít nên có thể các bạn chưa thấy vấn đề gì cả, và trước đây mình cũng như vậy, vì chỉ toàn làm những project nhỏ và đơn giản thôi mà. Nhưng khi đi làm ở công ty, tiếp xúc với hệ thống dữ liệu lớn tới hàng triệu bản ghi mình mới nhận ra sự khác biệt rất lớn. Khi đó nếu không xử lý tốt thay vì (5 + 1) thì số lượng query có thể lên tới (1.000.000 + 1) (nếu không dùng paging, còn nếu có paging thì thường sẽ là 100 + 1). Lúc đó trang web load rất là lâu, và khi nhìn vào cosole thì thực sự là kinh khủng &#x1f631;. Đặc biệt trong trường hợp remote database, mỗi lần truy cập đều tính phí và tốc độ cũng không thể nhanh bằng local database được thì đây là vấn đề thực sự đáng phải quan tâm. Để khắc phục tình trạng này, Rails cung cấp giải pháp rất đơn giản mà hữu ích, đó là <code>eager load</code>. Vậy cụ thể <code>eager load</code> là? &#x1f447;</p>
+<h1 id="eager-load-trong-rails">Eager load trong Rails</h1>
+<p>Eager load cho phép ta load dữ liệu từ bảng có quan hệ ngay lập tức, sẽ không cần phải truy vấn từng đối tượng. Cụ thể ở đây sẽ load trực tiếp dữ liệu của Category vào trong các Post ngay khi query tới 5 bài đăng gần nhất.</p>
+<p>Có 3 phương pháp sử dụng eager load là <code>include</code>, <code>preload</code> và <code>eager_load</code>. Vậy 3 phương pháp này có gì khác nhau, ta sẽ thử lần lượt vào đoạn code ở trên nhé  &#x1f609;. Ta chỉ cần sửa dòng lệnh đầu tiên, còn câu lệnh <code>each</code> thì không cần thay đổi.</p>
+<ul>
+<li><strong>preload</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># Chỉ truy vấn trên bảng post
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">preload</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả tại console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Post</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.5</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;posts&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;posts&#34;</span> <span class="nx">ORDER</span> <span class="nx">BY</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="nx">ASC</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">1</span>  <span class="p">[[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.4</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span> <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="nx">IN</span> <span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">,</span> <span class="err">$</span><span class="mi">2</span><span class="p">)</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1"># Truy vấn cả trên bảng categories
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">preload</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;categories.id = 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	 
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả tại console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ActiveRecord</span><span class="o">::</span><span class="na">StatementInvalid</span> <span class="p">(</span><span class="nx">PG</span><span class="o">::</span><span class="na">UndefinedTable</span><span class="o">:</span> <span class="nx">ERROR</span><span class="o">:</span>  <span class="nx">missing</span> <span class="nx">FROM</span><span class="o">-</span><span class="nx">clause</span> <span class="nx">entry</span> <span class="k">for</span> <span class="nx">table</span> <span class="s2">&#34;categories&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Dùng <code>preload</code> sẽ chỉ tạo ra 2 query, 1 để lấy các bài post và 1 để load category tương ứng vào từng bài post. Nhưng nếu ta muốn truy vấn với điều kiện trên bảng quan hệ thì sẽ gây ra lỗi.</p>
+<ul>
+<li><strong>eager_load</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># Chỉ truy vấn trên bảng post
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">eager_load</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả tại console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">SQL</span> <span class="p">(</span><span class="mf">4.9</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r0</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;title&#34;</span> <span class="k">AS</span> <span class="nx">t0_r1</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;content&#34;</span> <span class="k">AS</span> <span class="nx">t0_r2</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;cover&#34;</span> <span class="k">AS</span> <span class="nx">t0_r3</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;category_id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r4</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;created_at&#34;</span> <span class="k">AS</span> <span class="nx">t0_r5</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;updated_at&#34;</span> <span class="k">AS</span> <span class="nx">t0_r6</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;user_id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r7</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;description&#34;</span> <span class="k">AS</span> <span class="nx">t0_r8</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;slug&#34;</span> <span class="k">AS</span> <span class="nx">t0_r9</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="k">AS</span> <span class="nx">t0_r10</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;clap_count&#34;</span> <span class="k">AS</span> <span class="nx">t0_r11</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="k">AS</span> <span class="nx">t1_r0</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;name&#34;</span> <span class="k">AS</span> <span class="nx">t1_r1</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;created_at&#34;</span> <span class="k">AS</span> <span class="nx">t1_r2</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;updated_at&#34;</span> <span class="k">AS</span> <span class="nx">t1_r3</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;slug&#34;</span> <span class="k">AS</span> <span class="nx">t1_r4</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;image&#34;</span> <span class="k">AS</span> <span class="nx">t1_r5</span> <span class="nx">FROM</span> <span class="s2">&#34;posts&#34;</span> <span class="nx">LEFT</span> <span class="nx">OUTER</span> <span class="nx">JOIN</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">ON</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;category_id&#34;</span> <span class="nx">ORDER</span> <span class="nx">BY</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="nx">ASC</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">1</span>  <span class="p">[[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1"># Truy vấn cả trên bảng categories
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">eager_load</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;categories.id = 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	 
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả tại console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">SQL</span> <span class="p">(</span><span class="mf">0.7</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r0</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;title&#34;</span> <span class="k">AS</span> <span class="nx">t0_r1</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;content&#34;</span> <span class="k">AS</span> <span class="nx">t0_r2</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;cover&#34;</span> <span class="k">AS</span> <span class="nx">t0_r3</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;category_id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r4</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;created_at&#34;</span> <span class="k">AS</span> <span class="nx">t0_r5</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;updated_at&#34;</span> <span class="k">AS</span> <span class="nx">t0_r6</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;user_id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r7</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;description&#34;</span> <span class="k">AS</span> <span class="nx">t0_r8</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;slug&#34;</span> <span class="k">AS</span> <span class="nx">t0_r9</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="k">AS</span> <span class="nx">t0_r10</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;clap_count&#34;</span> <span class="k">AS</span> <span class="nx">t0_r11</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="k">AS</span> <span class="nx">t1_r0</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;name&#34;</span> <span class="k">AS</span> <span class="nx">t1_r1</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;created_at&#34;</span> <span class="k">AS</span> <span class="nx">t1_r2</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;updated_at&#34;</span> <span class="k">AS</span> <span class="nx">t1_r3</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;slug&#34;</span> <span class="k">AS</span> <span class="nx">t1_r4</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;image&#34;</span> <span class="k">AS</span> <span class="nx">t1_r5</span> <span class="nx">FROM</span> <span class="s2">&#34;posts&#34;</span> <span class="nx">LEFT</span> <span class="nx">OUTER</span> <span class="nx">JOIN</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">ON</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;category_id&#34;</span> <span class="nx">WHERE</span> <span class="p">(</span><span class="nx">categories</span><span class="o">.</span><span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="nx">ORDER</span> <span class="nx">BY</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="nx">ASC</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">1</span>  <span class="p">[[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Dùng <code>eager_load</code> sẽ chỉ tạo ra 1 query duy nhất sử dụng <strong>LEFT JOIN</strong>, thời gian truy vấn lâu hơn, nhưng bù lại có thể tìm kiếm dựa trên điều kiện của bảng quan hệ.</p>
+<ul>
+<li><strong>includes</strong></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># Chỉ truy vấn trên bảng post
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">includes</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả tại console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Post</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.5</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;posts&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;posts&#34;</span> <span class="nx">ORDER</span> <span class="nx">BY</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="nx">ASC</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">1</span>  <span class="p">[[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">Category</span> <span class="nx">Load</span> <span class="p">(</span><span class="mf">0.4</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span> <span class="s2">&#34;categories&#34;</span><span class="o">.*</span> <span class="nx">FROM</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">WHERE</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="nx">IN</span> <span class="p">(</span><span class="err">$</span><span class="mi">1</span><span class="p">,</span> <span class="err">$</span><span class="mi">2</span><span class="p">)</span>  <span class="p">[[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="s2">&#34;id&#34;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1"># Truy vấn cả trên bảng categories
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">includes</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;categories.id = 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	 
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả tại console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">ActiveRecord</span><span class="o">::</span><span class="na">StatementInvalid</span> <span class="p">(</span><span class="nx">PG</span><span class="o">::</span><span class="na">UndefinedTable</span><span class="o">:</span> <span class="nx">ERROR</span><span class="o">:</span>  <span class="nx">missing</span> <span class="nx">FROM</span><span class="o">-</span><span class="nx">clause</span> <span class="nx">entry</span> <span class="k">for</span> <span class="nx">table</span> <span class="s2">&#34;categories&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	 
+</span></span><span class="line"><span class="cl"><span class="c1"># Sửa dụng kết hợp .references
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">@</span><span class="nx">lasted_posts</span> <span class="o">=</span> <span class="nx">Post</span><span class="o">.</span><span class="nx">includes</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span><span class="o">.</span><span class="nx">where</span><span class="p">(</span><span class="s1">&#39;categories.id = 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">order</span><span class="p">(</span><span class="o">:</span><span class="nx">published</span><span class="p">)</span><span class="o">.</span><span class="nx">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="nx">references</span><span class="p">(</span><span class="o">:</span><span class="nx">category</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	 
+</span></span><span class="line"><span class="cl"><span class="c1"># Kết quả trên console
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">SQL</span> <span class="p">(</span><span class="mf">0.7</span><span class="nx">ms</span><span class="p">)</span>  <span class="nx">SELECT</span>  <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r0</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;title&#34;</span> <span class="k">AS</span> <span class="nx">t0_r1</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;content&#34;</span> <span class="k">AS</span> <span class="nx">t0_r2</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;cover&#34;</span> <span class="k">AS</span> <span class="nx">t0_r3</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;category_id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r4</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;created_at&#34;</span> <span class="k">AS</span> <span class="nx">t0_r5</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;updated_at&#34;</span> <span class="k">AS</span> <span class="nx">t0_r6</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;user_id&#34;</span> <span class="k">AS</span> <span class="nx">t0_r7</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;description&#34;</span> <span class="k">AS</span> <span class="nx">t0_r8</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;slug&#34;</span> <span class="k">AS</span> <span class="nx">t0_r9</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="k">AS</span> <span class="nx">t0_r10</span><span class="p">,</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;clap_count&#34;</span> <span class="k">AS</span> <span class="nx">t0_r11</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="k">AS</span> <span class="nx">t1_r0</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;name&#34;</span> <span class="k">AS</span> <span class="nx">t1_r1</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;created_at&#34;</span> <span class="k">AS</span> <span class="nx">t1_r2</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;updated_at&#34;</span> <span class="k">AS</span> <span class="nx">t1_r3</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;slug&#34;</span> <span class="k">AS</span> <span class="nx">t1_r4</span><span class="p">,</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;image&#34;</span> <span class="k">AS</span> <span class="nx">t1_r5</span> <span class="nx">FROM</span> <span class="s2">&#34;posts&#34;</span> <span class="nx">LEFT</span> <span class="nx">OUTER</span> <span class="nx">JOIN</span> <span class="s2">&#34;categories&#34;</span> <span class="nx">ON</span> <span class="s2">&#34;categories&#34;</span><span class="o">.</span><span class="s2">&#34;id&#34;</span> <span class="o">=</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;category_id&#34;</span> <span class="nx">WHERE</span> <span class="p">(</span><span class="nx">categories</span><span class="o">.</span><span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="nx">ORDER</span> <span class="nx">BY</span> <span class="s2">&#34;posts&#34;</span><span class="o">.</span><span class="s2">&#34;published&#34;</span> <span class="nx">ASC</span> <span class="nx">LIMIT</span> <span class="err">$</span><span class="mi">1</span>  <span class="p">[[</span><span class="s2">&#34;LIMIT&#34;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nếu chỉ dùng <code>includes</code> thì truy vấn trên bảng post cho kết quả giống với <code>preload</code>. Còn nếu kết hợp với <code>references</code> thì kết quả sẽ giống với <code>eager_load</code> khi truy vấn với điều kiện trên bảng quan hệ categories. Qua đó ta có thể thấy được <code>includes</code> là tiện lợi nhất, bù đắp được chỗ thiếu của cả <code>eager_load</code> và <code>preload</code>.</p>
+<h1 id="bullet-gem">Bullet gem</h1>
+<p>Mặc dù hiểu được vấn đề và cách giải quyết song đôi khi dù biết là không tốt nhưng vì thời gian gấp gáp mà ta bỏ qua, luôn nghĩ rằng sau này có thời gian rảnh sẽ quay lại tối ưu code. Nhưng khi hệ thống lớn dần, ta cũng quên mất vị trí cần sửa, vậy làm thế nào để phát hiện ra N + 1 query 1 cách nhanh chóng. Việc tìm lại trong từng đoạn code, phân tích xem có vấn đề hay không thì mất rất nhiều thời gian và công sức. Chính vì vậy mà gem <a href="https://github.com/flyerhzm/bullet" target="_blank" rel="noopener noreffer ">bullet</a> ra đời, không chỉ thông báo khi gặp đoạn code có chứa N + 1 queries, bullet còn phát hiện những nơi mà eager load không được sử dụng, giúp bạn tránh được việc load những dữ liệu không cần thiết.</p>
+<p>Để cài đặt các bạn thêm dòng sau vào  <strong>Gemfile</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">gem</span> <span class="s1">&#39;bullet&#39;</span><span class="p">,</span> <span class="nx">group</span><span class="o">:</span> <span class="s1">&#39;development&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nhưng như vậy là chưa đủ, <strong>bullet</strong> sẽ chỉ thực hiện những công file mà các bạn yêu cầu trong file <strong>config/environments/development.rb</strong>. Dưới đây là ví dụ config bullet mình hay dùng:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">config</span><span class="o">.</span><span class="nx">after_initialize</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">Bullet</span><span class="o">.</span><span class="nx">enable</span> <span class="o">=</span> <span class="k">true</span> <span class="c1"># Bật bullet.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">Bullet</span><span class="o">.</span><span class="nx">alert</span> <span class="o">=</span> <span class="k">true</span> <span class="c1"># Hiển thị alert box trên browser.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="nx">Bullet</span><span class="o">.</span><span class="nx">bullet_logger</span> <span class="o">=</span> <span class="k">true</span> <span class="c1"># Ghi lại log vào file bullet.log
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Còn nhiều config khác rất hữu ích, các bạn có thể xem tại đây <a href="https://github.com/flyerhzm/bullet#configuration" target="_blank" rel="noopener noreffer ">Bullet Configuration</a>.</p>
+<h1 id="tổng-kết">Tổng kết</h1>
+<p>Vậy là qua bài viết này mình đã phân tích về việc N + 1 queries ảnh hưởng như thế nào tới tốc độ của ứng dụng, đồng thời cũng đưa ra giải pháp cải thiện cho vấn đề này. Hi vọng bài viết hữu ích đối với các bạn. Hãy cùng nhau tạo nên các hệ thống tối ưu hơn nào =))).</p>
+<p>P/s: Nếu thông tin trong bài có gì sai hoặc khó hiểu, các bạn cứ thoải mái comment ở dưới giúp mình nhá. Thank you &#x1f618;.</p>
+<h1 id="tham-khảo">Tham khảo</h1>
+<ul>
+<li><a href="https://semaphoreci.com/blog/2017/08/09/faster-rails-eliminating-n-plus-one-queries.html" target="_blank" rel="noopener noreffer ">https://semaphoreci.com/blog/2017/08/09/faster-rails-eliminating-n-plus-one-queries.html</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-02-24</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/posts/giai_quyet_van_de_n_plus_1_trong_rails/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" data-title="Giải quyết vấn đề N &#43; 1 queries trong Rails"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" data-title="Giải quyết vấn đề N &#43; 1 queries trong Rails"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" data-title="Giải quyết vấn đề N &#43; 1 queries trong Rails"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/" data-title="Giải quyết vấn đề N &#43; 1 queries trong Rails" data-image="n_plus_1_problem.png"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/tan_huong_suoi_nuoc_nong_tai_hakono/" class="prev" rel="prev" title="Tận hưởng suối nước nóng tại Hakone"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Tận hưởng suối nước nóng tại Hakone</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.2">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about" target="_blank">Dinh Duc</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

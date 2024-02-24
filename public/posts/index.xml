@@ -4,13 +4,36 @@
         <link>http://localhost:1313/posts/</link>
         <description>All Posts | Nddblog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Giải quyết vấn đề N &#43; 1 queries trong Rails</title>
+    <link>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</link>
+    <pubDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/n_plus_1_problem.png" referrerpolicy="no-referrer">
+            </div>Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác.]]></description>
+</item>
+<item>
+    <title>Tận hưởng suối nước nóng tại Hakone</title>
+    <link>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</link>
+    <pubDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/hakone.webp" referrerpolicy="no-referrer">
+            </div>Đầu năm được bạn rủ đi Hakone chơi, có người quen mà cũng có người không quen nên lúc đầu cũng không biết nên đi hay không, cơ mà thôi trước lạ sau quen nên cuối cùng vẫn là cứ đi thôi &#x1f606;.
+Hakone là địa điểm có nhiều suối nước nóng nổi tiếng được nhiều người yêu thích, chưa kể lại còn rất dễ đi từ Tokyo, là nơi vui chơi lý tưởng cho những bạn không có nhiều thời gian.]]></description>
+</item>
+<item>
     <title>Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails</title>
     <link>http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</link>
     <pubDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</pubDate>
     <author>Dinh Duc</author>
     <guid>http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</guid>
-    <description><![CDATA[Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
+    <description><![CDATA[<div class="featured-image">
+                <img src="/circleci.png" referrerpolicy="no-referrer">
+            </div>Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
 1. Đăng ký tài khoản Bước đầu tiên các bạn cần đăng ký tài khoản của CircleCI. Hiện tại công cụ này chỉ hỗ trợ đăng ký bằng tài khoản Github hoặc Bitbucket:]]></description>
 </item>
 <item>
