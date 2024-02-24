@@ -4,9 +4,17 @@
         <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:22:42 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:27:08 &#43;0900</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano</title>
+    <link>http://localhost:1313/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</link>
+    <pubDate>Sat, 24 Feb 2024 22:27:08 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</guid>
+    <description><![CDATA[Xin chào các bạn, có lẽ cũng gần nửa năm rồi mình chưa viết bài mới nhỉ. Hôm nay do thời hạn dùng thử của Amazon free tier đã hết mình mất cả buổi sáng đổi server của blog qua bên Vultr. Do tốn khá nhiều thời gian và công sức nên nhân dịp này mình muốn viết 1 bài để chia sẽ với các bạn cách deploy ứng dụng Rails lên server Ubuntu 18.]]></description>
+</item>
+<item>
     <title>Cách tạo nhiều cơ sở dữ liệu trên CircleCI</title>
     <link>http://localhost:1313/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</link>
     <pubDate>Sat, 24 Feb 2024 22:22:42 &#43;0900</pubDate>
