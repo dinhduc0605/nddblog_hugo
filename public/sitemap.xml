@@ -2,14 +2,19 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/posts/cac_cau_lenh_huu_ich_khi_lam_viec_voi_postgresql/</loc><lastmod>2024-02-24T22:10:19&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/</loc><lastmod>2024-02-24T22:10:19&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/</loc><lastmod>2024-02-24T22:10:19&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/giai_quyet_van_de_n_plus_1_trong_rails/</loc><lastmod>2024-02-24T22:04:02&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</loc><lastmod>2024-02-24T21:57:36&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</loc><lastmod>2024-02-24T21:49:20&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/cung_nhau_tim_hieu_ve_continuous_integration/</loc><lastmod>2024-02-24T13:07:43&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/ransack_cong_cu_tim_kiem_hieu_qua/</loc><lastmod>2024-02-24T13:07:43&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/posts/loi_noi_dau/</loc><lastmod>2024-02-24T13:07:43&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>http://example.org/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-24T22:31:48&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2024-02-24T22:31:48&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2024-02-24T22:31:48&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-24T22:29:50&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</loc><lastmod>2024-02-24T22:27:55&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</loc><lastmod>2024-02-24T22:23:51&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/cach-do-ruby-bac-trong-3-tuan/</loc><lastmod>2024-02-24T22:18:28&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</loc><lastmod>2024-02-24T22:10:19&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/giai-quyet-van-de-n-cong-1-trong-rails/</loc><lastmod>2024-02-24T21:59:06&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</loc><lastmod>2024-02-24T21:52:30&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</loc><lastmod>2024-02-24T13:29:35&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/cung-nhau-tim-hieu-ve-continuous-integration/</loc><lastmod>2024-02-23T21:32:29&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/ransack-cong-cu-tim-kiem-hieu-qua/</loc><lastmod>2024-02-23T21:20:44&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/posts/loi-noi-dau/</loc><lastmod>2024-02-23T16:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://example.org/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://example.org/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
