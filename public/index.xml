@@ -4,9 +4,20 @@
         <link>http://localhost:1313/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Tận hưởng suối nước nóng tại Hakone</title>
+    <link>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</link>
+    <pubDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>http://localhost:1313/posts/tan_huong_suoi_nuoc_nong_tai_hakono/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/hakone.webp" referrerpolicy="no-referrer">
+            </div>Đầu năm được bạn rủ đi Hakone chơi, có người quen mà cũng có người không quen nên lúc đầu cũng không biết nên đi hay không, cơ mà thôi trước lạ sau quen nên cuối cùng vẫn là cứ đi thôi &#x1f606;.
+Hakone là địa điểm có nhiều suối nước nóng nổi tiếng được nhiều người yêu thích, chưa kể lại còn rất dễ đi từ Tokyo, là nơi vui chơi lý tưởng cho những bạn không có nhiều thời gian.]]></description>
+</item>
+<item>
     <title>Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails</title>
     <link>http://localhost:1313/posts/tich_hop_circleci_trong_phat_trien_ung_dung_ruby_on_rails/</link>
     <pubDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</pubDate>
