@@ -1,77 +1,77 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Nddblog</title>
-        <link>http://example.org/</link>
-        <description>This is my cool site</description>
+        <title>NDDBlog</title>
+        <link>https://nddblog.com/</link>
+        <description>Những mẩu chuyện nhỏ của Đức</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
             <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:30:36 &#43;0900</lastBuildDate>
-            <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://nddblog.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>[Phần 2 - công việc] Nhật Bản - 5 năm 1 chặng đường</title>
-    <link>http://example.org/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</link>
+    <link>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</link>
     <pubDate>Sat, 24 Feb 2024 22:30:36 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</guid>
+    <guid>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</guid>
     <description><![CDATA[Phần 2 - Công việc Tiếp tục đến phần 2 của bài viết 「Nhật Bản - 5 năm 1 chặng đường」, mình sẽ tổng kết những việc đã trải qua trong công việc tại Nhật. Sau 1 lúc suy nghĩ thì mình cảm thấy nên chia thành các mục theo cột mốc thời gian, như vậy sẽ dễ nhận ra quá trình trưởng thành trong lối tư duy của bản thân hơn.]]></description>
 </item>
 <item>
     <title>[Phần 1 - Đời sống] Nhật Bản - 5 năm 1 chặng đường</title>
-    <link>http://example.org/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</link>
+    <link>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</link>
     <pubDate>Sat, 24 Feb 2024 22:28:44 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</guid>
+    <guid>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</guid>
     <description><![CDATA[Chỉ còn vài ngày nữa thôi là mình đã ở Nhật được 5 năm rồi (28/02/2018 - 28/02/2023), 1 quãng thời gian không dài mà cũng không ngắn. Nhưng đây là 5 năm đầu tiên sau khi ra trường của mình, vui có mà buồn cũng có, vì vậy mình quyết định viết 1 bài để tổng kết lại 5 năm vô cùng quan trọng này. Khi mới sang Nhật được 1 năm mình cũng đã định viết rồi, cơ mà động vào máy tính, suy nghĩ 1 lúc mà không nghĩ ra nên viết gì nên lại gập máy lại 🥹]]></description>
 </item>
 <item>
     <title>Deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano</title>
-    <link>http://example.org/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</link>
+    <link>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</link>
     <pubDate>Sat, 24 Feb 2024 22:27:08 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</guid>
+    <guid>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</guid>
     <description><![CDATA[Xin chào các bạn, có lẽ cũng gần nửa năm rồi mình chưa viết bài mới nhỉ. Hôm nay do thời hạn dùng thử của Amazon free tier đã hết mình mất cả buổi sáng đổi server của blog qua bên Vultr. Do tốn khá nhiều thời gian và công sức nên nhân dịp này mình muốn viết 1 bài để chia sẽ với các bạn cách deploy ứng dụng Rails lên server Ubuntu 18.]]></description>
 </item>
 <item>
     <title>Cách tạo nhiều cơ sở dữ liệu trên CircleCI</title>
-    <link>http://example.org/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</link>
+    <link>https://nddblog.com/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</link>
     <pubDate>Sat, 24 Feb 2024 22:22:42 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</guid>
+    <guid>https://nddblog.com/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</guid>
     <description><![CDATA[Thông thường các hệ thống chỉ có cơ sở dữ liệu (CSDL) của chính nó, nhưng với các hệ thống phức tạp hơn, liên kết với các hệ thống khác thì nhiều khi sẽ phải truy cập trực tiếp vào các CSDL bên ngoài để lấy thông tin. Trên CircleCI, để tạo CSDL của chính hệ thống ta chỉ cần gọi bundle exec rake db:create và bundle exec rake db:migrate (ở đây mình giả sử các bạn sử dụng Rails) là tất cả các bảng sẽ tự động được tạo ra.]]></description>
 </item>
 <item>
     <title>Cách đỗ Ruby bạc trong 3 tuần</title>
-    <link>http://example.org/posts/cach-do-ruby-bac-trong-3-tuan/</link>
+    <link>https://nddblog.com/posts/cach-do-ruby-bac-trong-3-tuan/</link>
     <pubDate>Sat, 24 Feb 2024 22:18:28 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/cach-do-ruby-bac-trong-3-tuan/</guid>
+    <guid>https://nddblog.com/posts/cach-do-ruby-bac-trong-3-tuan/</guid>
     <description><![CDATA[Tuần trước mình có đi thi Ruby bạc, may mắn là đã đỗ và điểm số cũng không tệ lắm &#x1f60e;. Vì vậy hôm nay mình viết bài này để chia sẻ với mọi người cách học của mình để thi đỗ trong vòng 3 tuần. Tất nhiên thời gian này cũng chỉ là tương đối, phải dựa trên khả năng của từng người nữa. Nhưng ở đây mình giả sử các bạn đã có kiến thức căn bản về Ruby rồi nhé.]]></description>
 </item>
 <item>
     <title>Các câu lệnh hữu ích khi làm việc với PostgreSQL</title>
-    <link>http://example.org/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</link>
+    <link>https://nddblog.com/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</link>
     <pubDate>Sat, 24 Feb 2024 22:10:19 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</guid>
+    <guid>https://nddblog.com/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/postgresql.png" referrerpolicy="no-referrer">
             </div>Dạo này ở công ty mình hay được giao task lấy dữ liệu trực tiếp từ database theo yêu cầu của bên sale. Và để làm được thì tất nhiên là phải viết raw query rồi. Thực sự thì trước mình cũng chỉ mới nắm được các kiến thức cơ bản của SQL thôi chứ cũng chưa có nhiều cơ hội thực hành nên vẫn gà mờ lắm &#x1f62d;. Mới đầu để viết đc query thoả mãn các yêu cầu thì hầu như mình phải google liên tục, động vào cái gì cũng lơ mơ, rất là khó chịu và mất thời gian.]]></description>
 </item>
 <item>
     <title>Giải quyết vấn đề N &#43; 1 queries trong Rails</title>
-    <link>http://example.org/posts/giai-quyet-van-de-n-cong-1-trong-rails/</link>
+    <link>https://nddblog.com/posts/giai-quyet-van-de-n-cong-1-trong-rails/</link>
     <pubDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/giai-quyet-van-de-n-cong-1-trong-rails/</guid>
+    <guid>https://nddblog.com/posts/giai-quyet-van-de-n-cong-1-trong-rails/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/n_plus_1_problem.png" referrerpolicy="no-referrer">
             </div>Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog&hellip; thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác.]]></description>
 </item>
 <item>
     <title>Tận hưởng suối nước nóng tại Hakone</title>
-    <link>http://example.org/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</link>
+    <link>https://nddblog.com/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</link>
     <pubDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</guid>
+    <guid>https://nddblog.com/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/hakone.webp" referrerpolicy="no-referrer">
             </div>Đầu năm được bạn rủ đi Hakone chơi, có người quen mà cũng có người không quen nên lúc đầu cũng không biết nên đi hay không, cơ mà thôi trước lạ sau quen nên cuối cùng vẫn là cứ đi thôi &#x1f606;.
@@ -79,10 +79,10 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 </item>
 <item>
     <title>Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails</title>
-    <link>http://example.org/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</link>
+    <link>https://nddblog.com/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</link>
     <pubDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</guid>
+    <guid>https://nddblog.com/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/circleci.png" referrerpolicy="no-referrer">
             </div>Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
@@ -90,10 +90,10 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 </item>
 <item>
     <title>Cùng nhau tìm hiểu về Continuous Integration</title>
-    <link>http://example.org/posts/cung-nhau-tim-hieu-ve-continuous-integration/</link>
+    <link>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</link>
     <pubDate>Fri, 23 Feb 2024 21:32:29 &#43;0900</pubDate>
     <author>Dinh Duc</author>
-    <guid>http://example.org/posts/cung-nhau-tim-hieu-ve-continuous-integration/</guid>
+    <guid>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/continuous_integration.png" referrerpolicy="no-referrer">
             </div>Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé &#x1f60b;.
