@@ -1,6 +1,7 @@
 +++
 title = 'Lời nói đầu'
 date = 2024-02-23T16:36:45+09:00
+featuredImage = 'images/japan.jpeg'
 draft = false
 +++
 Xin chào các bạn, mình là Đức, người tạo ra NDDBlog này. Chắc hẳn nhìn tên là các bạn đã hiểu vì sao blog này lại có tên như vậy rồi nhỉ :smile:.
