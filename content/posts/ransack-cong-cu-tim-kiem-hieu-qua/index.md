@@ -1,8 +1,7 @@
 +++
 title = 'Ransack - công cụ tuyệt vời giúp tìm kiếm và sắp xếp dữ liệu đơn giản hơn'
-date = 2024-02-23T21:20:44+09:00
+date = 2018-12-08
 featuredImage = 'ransack.png'
-draft = false
 +++
 Kể từ bài viết trước cũng đã phải hơn 2 tháng rồi nhỉ, cứ mỗi lần động vào định viết gì đó mà không nghĩ ra gì là mình lại thôi :joy:. Hôm nay phải cố gắng lắm mới ngồi được vào máy tính gõ ra vài dòng. Sau 1 hồi đắn đo suy nghĩ thì mình quyết định viết về những kiến thức cũng như kinh nghiệm đã học được từ khi đi làm đến giờ :sunglasses:.
  

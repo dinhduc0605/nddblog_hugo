@@ -1,7 +1,6 @@
 +++
 title = '[Phần 1 - Đời sống] Nhật Bản - 5 năm 1 chặng đường'
-date = 2024-02-24T22:28:44+09:00
-draft = false
+date = 2023-02-25
 +++
 Chỉ còn vài ngày nữa thôi là mình đã ở Nhật được 5 năm rồi (28/02/2018 - 28/02/2023), 1 quãng thời gian không dài mà cũng không ngắn. Nhưng đây là 5 năm đầu tiên sau khi ra trường của mình, vui có mà buồn cũng có, vì vậy mình quyết định viết 1 bài để tổng kết lại 5 năm vô cùng quan trọng này. Khi mới sang Nhật được 1 năm mình cũng đã định viết rồi, cơ mà động vào máy tính, suy nghĩ 1 lúc mà không nghĩ ra nên viết gì nên lại gập máy lại 🥹 
 # Phần 1 - Đời sống

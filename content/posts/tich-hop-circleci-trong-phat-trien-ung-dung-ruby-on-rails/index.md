@@ -1,8 +1,7 @@
 +++
 title = 'Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails'
-date = 2024-02-24T13:29:35+09:00
+date = 2018-12-30
 featuredImage = 'circleci.png'
-draft = false
 +++
 Trong bài viết trước chúng ta đã [Cùng nhau tìm hiểu về Continuous Integration](/posts/cung_nhau_tim_hieu_ve_continuous_integration/). Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
 

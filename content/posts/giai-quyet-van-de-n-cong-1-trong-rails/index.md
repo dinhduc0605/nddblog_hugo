@@ -1,8 +1,7 @@
 +++
 title = 'Giải quyết vấn đề N + 1 queries trong Rails'
-date = 2024-02-24T21:59:06+09:00
+date = 2019-03-16
 featuredImage = 'n_plus_1_problem.png'
-draft = false
 +++
 Rails thường được cho là framework rất dễ học và làm quen, bản thân mình cũng cho là như vậy. Nếu chỉ là làm những trang web cơ bản như bán hàng, blog... thì có lẽ chỉ cần học vài tuần, thêm chút kiến thức về bootstrap, jquery là đã đủ dùng. Nhưng, để có thể nắm vững, tối ưu được hệ thống và phục vụ lượng người dùng lớn thì lại là 1 chuyện khác. Để hiểu sâu về Rails ta cũng cần phải đầu tư thời gian nhiều như những ngôn ngữ và framework khác. Chúng ta không thể mong đợi rằng các vấn đề sẽ tự nhiên biến mất chỉ vì chuyển sang dùng 1 công cụ nhanh hơn. 1 thuật toán chạy chậm trong C++ thì hẳn nhiên nó cũng chạy chậm trong Ruby :pensive:. 
 

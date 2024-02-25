@@ -1,8 +1,7 @@
 +++
 title = 'Tận hưởng suối nước nóng tại Hakone'
-date = 2024-02-24T21:52:30+09:00
+date = 2019-01-13
 featuredImage = 'hakone.webp'
-draft = false
 +++
 Đầu năm được bạn rủ đi Hakone chơi, có người quen mà cũng có người không quen nên lúc đầu cũng không biết nên đi hay không, cơ mà thôi trước lạ sau quen nên cuối cùng vẫn là cứ đi thôi :laughing:. 
 

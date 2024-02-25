@@ -4,10 +4,10 @@
         <link>https://nddblog.com/posts/</link>
         <description>All Posts | NDDBlog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 24 Feb 2024 22:30:36 &#43;0900</lastBuildDate><atom:link href="https://nddblog.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://nddblog.com/posts/" rel="self" type="application/rss+xml" /><item>
     <title>[Phần 2 - công việc] Nhật Bản - 5 năm 1 chặng đường</title>
     <link>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</link>
-    <pubDate>Sat, 24 Feb 2024 22:30:36 &#43;0900</pubDate>
+    <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</guid>
     <description><![CDATA[Phần 2 - Công việc Tiếp tục đến phần 2 của bài viết 「Nhật Bản - 5 năm 1 chặng đường」, mình sẽ tổng kết những việc đã trải qua trong công việc tại Nhật. Sau 1 lúc suy nghĩ thì mình cảm thấy nên chia thành các mục theo cột mốc thời gian, như vậy sẽ dễ nhận ra quá trình trưởng thành trong lối tư duy của bản thân hơn.]]></description>
@@ -15,7 +15,7 @@
 <item>
     <title>[Phần 1 - Đời sống] Nhật Bản - 5 năm 1 chặng đường</title>
     <link>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</link>
-    <pubDate>Sat, 24 Feb 2024 22:28:44 &#43;0900</pubDate>
+    <pubDate>Sat, 25 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</guid>
     <description><![CDATA[Chỉ còn vài ngày nữa thôi là mình đã ở Nhật được 5 năm rồi (28/02/2018 - 28/02/2023), 1 quãng thời gian không dài mà cũng không ngắn. Nhưng đây là 5 năm đầu tiên sau khi ra trường của mình, vui có mà buồn cũng có, vì vậy mình quyết định viết 1 bài để tổng kết lại 5 năm vô cùng quan trọng này. Khi mới sang Nhật được 1 năm mình cũng đã định viết rồi, cơ mà động vào máy tính, suy nghĩ 1 lúc mà không nghĩ ra nên viết gì nên lại gập máy lại 🥹]]></description>
@@ -23,7 +23,7 @@
 <item>
     <title>Deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano</title>
     <link>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</link>
-    <pubDate>Sat, 24 Feb 2024 22:27:08 &#43;0900</pubDate>
+    <pubDate>Sun, 06 Sep 2020 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</guid>
     <description><![CDATA[Xin chào các bạn, có lẽ cũng gần nửa năm rồi mình chưa viết bài mới nhỉ. Hôm nay do thời hạn dùng thử của Amazon free tier đã hết mình mất cả buổi sáng đổi server của blog qua bên Vultr. Do tốn khá nhiều thời gian và công sức nên nhân dịp này mình muốn viết 1 bài để chia sẽ với các bạn cách deploy ứng dụng Rails lên server Ubuntu 18.]]></description>
@@ -31,7 +31,7 @@
 <item>
     <title>Cách tạo nhiều cơ sở dữ liệu trên CircleCI</title>
     <link>https://nddblog.com/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</link>
-    <pubDate>Sat, 24 Feb 2024 22:22:42 &#43;0900</pubDate>
+    <pubDate>Tue, 21 Apr 2020 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</guid>
     <description><![CDATA[Thông thường các hệ thống chỉ có cơ sở dữ liệu (CSDL) của chính nó, nhưng với các hệ thống phức tạp hơn, liên kết với các hệ thống khác thì nhiều khi sẽ phải truy cập trực tiếp vào các CSDL bên ngoài để lấy thông tin. Trên CircleCI, để tạo CSDL của chính hệ thống ta chỉ cần gọi bundle exec rake db:create và bundle exec rake db:migrate (ở đây mình giả sử các bạn sử dụng Rails) là tất cả các bảng sẽ tự động được tạo ra.]]></description>
@@ -39,7 +39,7 @@
 <item>
     <title>Cách đỗ Ruby bạc trong 3 tuần</title>
     <link>https://nddblog.com/posts/cach-do-ruby-bac-trong-3-tuan/</link>
-    <pubDate>Sat, 24 Feb 2024 22:18:28 &#43;0900</pubDate>
+    <pubDate>Sat, 08 Jun 2019 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/cach-do-ruby-bac-trong-3-tuan/</guid>
     <description><![CDATA[Tuần trước mình có đi thi Ruby bạc, may mắn là đã đỗ và điểm số cũng không tệ lắm &#x1f60e;. Vì vậy hôm nay mình viết bài này để chia sẻ với mọi người cách học của mình để thi đỗ trong vòng 3 tuần. Tất nhiên thời gian này cũng chỉ là tương đối, phải dựa trên khả năng của từng người nữa. Nhưng ở đây mình giả sử các bạn đã có kiến thức căn bản về Ruby rồi nhé.]]></description>
@@ -47,7 +47,7 @@
 <item>
     <title>Các câu lệnh hữu ích khi làm việc với PostgreSQL</title>
     <link>https://nddblog.com/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</link>
-    <pubDate>Sat, 24 Feb 2024 22:10:19 &#43;0900</pubDate>
+    <pubDate>Thu, 02 May 2019 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</guid>
     <description><![CDATA[<div class="featured-image">
@@ -57,7 +57,7 @@
 <item>
     <title>Giải quyết vấn đề N &#43; 1 queries trong Rails</title>
     <link>https://nddblog.com/posts/giai-quyet-van-de-n-cong-1-trong-rails/</link>
-    <pubDate>Sat, 24 Feb 2024 21:59:06 &#43;0900</pubDate>
+    <pubDate>Sat, 16 Mar 2019 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/giai-quyet-van-de-n-cong-1-trong-rails/</guid>
     <description><![CDATA[<div class="featured-image">
@@ -67,7 +67,7 @@
 <item>
     <title>Tận hưởng suối nước nóng tại Hakone</title>
     <link>https://nddblog.com/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</link>
-    <pubDate>Sat, 24 Feb 2024 21:52:30 &#43;0900</pubDate>
+    <pubDate>Sun, 13 Jan 2019 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</guid>
     <description><![CDATA[<div class="featured-image">
@@ -78,7 +78,7 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 <item>
     <title>Tích hợp CircleCI trong phát triển ứng dụng Ruby on Rails</title>
     <link>https://nddblog.com/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</link>
-    <pubDate>Sat, 24 Feb 2024 13:29:35 &#43;0900</pubDate>
+    <pubDate>Sun, 30 Dec 2018 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</guid>
     <description><![CDATA[<div class="featured-image">
@@ -89,7 +89,7 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
 <item>
     <title>Cùng nhau tìm hiểu về Continuous Integration</title>
     <link>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</link>
-    <pubDate>Fri, 23 Feb 2024 21:32:29 &#43;0900</pubDate>
+    <pubDate>Sun, 16 Dec 2018 00:00:00 &#43;0000</pubDate>
     <author>Dinh Duc</author>
     <guid>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</guid>
     <description><![CDATA[<div class="featured-image">

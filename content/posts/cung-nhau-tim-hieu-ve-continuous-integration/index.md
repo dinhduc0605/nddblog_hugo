@@ -1,8 +1,7 @@
 +++
 title = 'Cùng nhau tìm hiểu về Continuous Integration'
-date = 2024-02-23T21:32:29+09:00
+date = 2018-12-16
 featuredImage = 'continuous_integration.png'
-draft = false
 +++
 Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé :yum:.
 

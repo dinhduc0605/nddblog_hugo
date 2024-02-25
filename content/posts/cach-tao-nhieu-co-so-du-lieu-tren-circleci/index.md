@@ -1,7 +1,6 @@
 +++
 title = 'Cách tạo nhiều cơ sở dữ liệu trên CircleCI'
-date = 2024-02-24T22:22:42+09:00
-draft = false
+date = 2020-04-21
 +++
 Thông thường các hệ thống  chỉ có cơ sở dữ liệu  (CSDL) của chính nó, nhưng với các hệ thống phức tạp hơn, liên kết với các hệ thống khác thì nhiều khi sẽ phải truy cập trực tiếp vào các CSDL bên ngoài để lấy thông tin. Trên CircleCI, để tạo CSDL của chính hệ thống ta chỉ cần gọi `bundle exec rake db:create` và `bundle exec rake db:migrate` (ở đây mình giả sử các bạn sử dụng Rails)  là tất cả các bảng sẽ tự động được tạo ra.  Nhưng còn CSDL của hệ thống bên ngoài thì làm như thế nào ? Hôm nay mình sẽ giới thiệu với các bạn cách xử lý trong tình huống này.
 

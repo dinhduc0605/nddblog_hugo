@@ -1,7 +1,6 @@
 +++
 title = '[Phần 2 - công việc] Nhật Bản - 5 năm 1 chặng đường'
-date = 2024-02-24T22:30:36+09:00
-draft = false
+date = 2023-03-04
 +++
 # Phần 2 - Công việc
 Tiếp tục đến phần 2 của bài viết 「Nhật Bản - 5 năm 1 chặng đường」, mình sẽ tổng kết những việc đã trải qua trong công việc tại Nhật. Sau 1 lúc suy nghĩ thì mình cảm thấy nên chia thành các mục theo cột mốc thời gian, như vậy sẽ dễ nhận ra quá trình trưởng thành trong lối tư duy của bản thân hơn.

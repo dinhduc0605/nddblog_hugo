@@ -1,8 +1,7 @@
 +++
 title = 'Các câu lệnh hữu ích khi làm việc với PostgreSQL'
-date = 2024-02-24T22:10:19+09:00
+date = 2019-05-02
 featuredImage = 'postgresql.png'
-draft = false
 +++
 Dạo này ở công ty mình hay được giao task lấy dữ liệu trực tiếp từ database theo yêu cầu của bên sale. Và để làm được thì tất nhiên là phải viết raw query rồi. Thực sự thì trước mình cũng chỉ mới nắm được các kiến thức cơ bản của SQL thôi chứ cũng chưa có nhiều cơ hội thực hành nên vẫn gà mờ lắm :sob:. Mới đầu để viết đc query thoả mãn các yêu cầu thì hầu như mình phải google liên tục, động vào cái gì cũng lơ mơ, rất là khó chịu và mất thời gian. Nhưng dần dần mình cũng quen hơn, nhớ được nhiều câu lệnh hơn, và cảm thấy việc viết SQL khá là thú vị :relieved:. Mình nhận ra rằng học và nhớ được lý thuyết là 1 chuyện, còn để áp dụng nó vào thực tế lại 1 chuyện khác không hề đơn giản. Vì vậy trong bài viết này mình sẽ không đề cập đến các kiến thức về SQL mà sẽ tập trung vào các trường hợp cụ thể. 
 

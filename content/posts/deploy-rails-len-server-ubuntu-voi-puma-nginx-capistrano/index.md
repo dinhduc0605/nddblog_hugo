@@ -1,7 +1,6 @@
 +++
 title = 'Deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano'
-date = 2024-02-24T22:27:08+09:00
-draft = false
+date = 2020-09-06
 +++
 Xin chào các bạn, có lẽ cũng gần nửa năm rồi mình chưa viết bài mới nhỉ. Hôm nay do thời hạn dùng thử của Amazon free tier đã hết mình mất cả buổi sáng đổi server của blog qua bên Vultr. Do tốn khá nhiều thời gian và công sức nên nhân dịp này mình muốn viết 1 bài để chia sẽ với các bạn cách deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano
 

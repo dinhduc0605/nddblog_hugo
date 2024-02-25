@@ -1,7 +1,6 @@
 +++
 title = 'Cách đỗ Ruby bạc trong 3 tuần'
-date = 2024-02-24T22:18:28+09:00
-draft = false
+date = 2019-06-08
 +++
 Tuần trước mình có đi thi Ruby bạc, may mắn là đã đỗ và điểm số cũng không tệ lắm :sunglasses:. Vì vậy hôm nay mình viết bài này để chia sẻ với mọi người cách học của mình để thi đỗ trong vòng 3 tuần. Tất nhiên thời gian này cũng chỉ là tương đối, phải dựa trên khả năng của từng người nữa. Nhưng ở đây mình giả sử các bạn đã có kiến thức căn bản về Ruby rồi nhé.
 
