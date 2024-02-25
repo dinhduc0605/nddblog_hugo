@@ -16,7 +16,7 @@ hasCJKLanguage = false
 # default amount of posts in each pages
 paginate = 12
 # google analytics code [UA-XXXXXXXX-X]
-googleAnalytics = "366011786"
+googleAnalytics = "G-1EEDX0ZWGL"
 # copyright description used only for seo schema
 copyright = ""
 
@@ -350,7 +350,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     enable = true
     # Google Analytics
     [params.analytics.google]
-      id = "366011786"
+      id = "G-1EEDX0ZWGL"
       # whether to anonymize IP
       anonymizeIP = true
 
