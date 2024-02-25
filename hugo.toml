@@ -213,9 +213,9 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # Social config about the author
   [params.social]
-    GitHub = "https://github.com/dinhduc0605"
-    Linkedin = "https://www.linkedin.com/in/nguyen-dinh-duc-0605/"
-    Facebook = "https://www.facebook.com/dinhduc6594/"
+    GitHub = "dinhduc0605"
+    Linkedin = "nguyen-dinh-duc-0605"
+    Facebook = "dinhduc6594"
     Email = "dinhduc0605@gmail.com"
 
   #  Page global config
