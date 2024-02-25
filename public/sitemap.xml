@@ -2,8 +2,9 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://nddblog.com/about/</loc><lastmod>2024-02-26T01:01:41&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://nddblog.com/</loc><lastmod>2024-02-26T01:01:41&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-24T22:31:48&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://nddblog.com/posts/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-24T22:29:50&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</loc><lastmod>2024-02-24T22:27:55&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
