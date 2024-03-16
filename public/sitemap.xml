@@ -2,20 +2,21 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://nddblog.com/about/</loc><lastmod>2024-02-26T01:01:41&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/</loc><lastmod>2024-02-26T01:01:41&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-24T22:31:48&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-24T22:29:50&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</loc><lastmod>2024-02-24T22:27:55&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</loc><lastmod>2024-02-24T22:23:51&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/cach-do-ruby-bac-trong-3-tuan/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/giai-quyet-van-de-n-cong-1-trong-rails/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/ransack-cong-cu-tim-kiem-hieu-qua/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://nddblog.com/posts/loi-noi-dau/</loc><lastmod>2024-02-24T22:36:45&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://nddblog.com/posts/cach-xoa-apex-file-tren-moi-truong-production-cua-salesforce/</loc><lastmod>2024-03-16T01:15:53&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://nddblog.com/</loc><lastmod>2024-03-16T01:15:53&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://nddblog.com/posts/</loc><lastmod>2024-03-16T01:15:53&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://nddblog.com/about/</loc><lastmod>2024-02-26T01:01:41&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/phan-1-doi-song-nhat-ban-5-nam-1-chang-duong/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/deploy-rails-len-server-ubuntu-voi-puma-nginx-capistrano/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/cach-tao-nhieu-co-so-du-lieu-tren-circleci/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/cach-do-ruby-bac-trong-3-tuan/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/cac-cau-lenh-huu-ich-khi-lam-viec-voi-postgresql/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/giai-quyet-van-de-n-cong-1-trong-rails/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/tan-huong-suoi-nuoc-nong-tai-hakono/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/tich-hop-circleci-trong-phat-trien-ung-dung-ruby-on-rails/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/ransack-cong-cu-tim-kiem-hieu-qua/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://nddblog.com/posts/loi-noi-dau/</loc><lastmod>2024-02-26T01:27:57&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>https://nddblog.com/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://nddblog.com/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

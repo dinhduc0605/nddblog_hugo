@@ -4,9 +4,18 @@
         <link>https://nddblog.com/</link>
         <description>Những mẩu chuyện nhỏ của Đức</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sun, 25 Feb 2024 20:17:43 &#43;0900</lastBuildDate>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</lastBuildDate>
             <atom:link href="https://nddblog.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Cách xoá Apex file trên môi trường production của Salesforce</title>
+    <link>https://nddblog.com/posts/cach-xoa-apex-file-tren-moi-truong-production-cua-salesforce/</link>
+    <pubDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>https://nddblog.com/posts/cach-xoa-apex-file-tren-moi-truong-production-cua-salesforce/</guid>
+    <description><![CDATA[Bạn đã từng phải đối mặt với việc cần xoá một file Apex Class trên môi trường Production của Salesforce mà không biết cách thực hiện? Trong bài viết này, mình sẽ chia sẻ về cách thức xoá một Apex Class một cách an toàn và hiệu quả bằng cách sử dụng công cụ Workbench 💪
+Workbench là gì? Workbench là một công cụ mạnh mẽ giúp bạn thực hiện các thao tác quản lý dữ liệu và metadata trên các môi trường Salesforce một cách dễ dàng thông qua Force.]]></description>
+</item>
+<item>
     <title>[Phần 2 - công việc] Nhật Bản - 5 năm 1 chặng đường</title>
     <link>https://nddblog.com/posts/phan-2-cong-viec-nhat-ban-5-nam-1-chang-duong/</link>
     <pubDate>Sat, 04 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -87,17 +96,6 @@ Hakone là địa điểm có nhiều suối nước nóng nổi tiếng đượ
                 <img src="/circleci.png" referrerpolicy="no-referrer">
             </div>Trong bài viết trước chúng ta đã Cùng nhau tìm hiểu về Continuous Integration. Vì vậy như đã hứa, hôm nay mình sẽ hướng dẫn các bạn cài đặt và sử dụng 1 trong các công cụ CI phổ biến hiện nay - CircleCI khi phát triển ứng dụng với Ruby on Rails.
 1. Đăng ký tài khoản Bước đầu tiên các bạn cần đăng ký tài khoản của CircleCI. Hiện tại công cụ này chỉ hỗ trợ đăng ký bằng tài khoản Github hoặc Bitbucket:]]></description>
-</item>
-<item>
-    <title>Cùng nhau tìm hiểu về Continuous Integration</title>
-    <link>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</link>
-    <pubDate>Sun, 16 Dec 2018 00:00:00 &#43;0000</pubDate>
-    <author>Dinh Duc</author>
-    <guid>https://nddblog.com/posts/cung-nhau-tim-hieu-ve-continuous-integration/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/continuous_integration.png" referrerpolicy="no-referrer">
-            </div>Chắc hẳn nhiều bạn cũng đã từng nghe đến cụm từ Continuous Integration ( gọi tắt là CI ), vậy các bạn có từng thắc mắc CI nghĩa là gì, và tại sao lại cần đến nó không? Nếu có hãy cùng mình tìm hiểu thông qua bài viết này nhé &#x1f60b;.
-1. Continuous Integration là? Continuous Integration là cách thức phát triển phần mềm DevOps, trong đó các lập trình viên thường xuyên merge ( hay commit ) code của họ vào các central repo ( như github, gitlab&hellip; ), sau đó những đoạn code sẽ được build và test 1 cách tự động.]]></description>
 </item>
 </channel>
 </rss>
