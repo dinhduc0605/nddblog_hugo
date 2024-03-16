@@ -109,33 +109,43 @@
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#bước-1-cài-đặt-nginx">Bước 1: Cài đặt Nginx</a></li>
+    <li><a href="#bước-2-cài-đặt-database-postgres">Bước 2: Cài đặt database (Postgres)</a></li>
+    <li><a href="#bước-3-cài-đặt-rvm">Bước 3: Cài đặt RVM</a></li>
+    <li><a href="#bước-4-thiết-lập-ssh-keys">Bước 4: Thiết lập SSH keys</a></li>
+    <li><a href="#bước-5-config-capistrano-và-nginx">Bước 5: Config Capistrano và Nginx</a></li>
+    <li><a href="#bước-6-deploy-ứng-dụng">Bước 6: Deploy ứng dụng</a></li>
+    <li><a href="#tổng-kết">Tổng kết</a></li>
+  </ul>
+</nav></div>
             </div><div class="content" id="content"><p>Xin chào các bạn, có lẽ cũng gần nửa năm rồi mình chưa viết bài mới nhỉ. Hôm nay do thời hạn dùng thử của Amazon free tier đã hết mình mất cả buổi sáng đổi server của blog qua bên Vultr. Do tốn khá nhiều thời gian và công sức nên nhân dịp này mình muốn viết 1 bài để chia sẽ với các bạn cách deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano</p>
 <p>Trước khi bắt tay vào cài đặt bạn cần có các điều kiện dưới đây:</p>
 <ul>
 <li>Server Ubuntu 18.04. Mình đang sử dụng server của <a href="https://www.vultr.com/" target="_blank" rel="noopener noreffer ">Vultr</a>. Theo mình tìm hiểu thì hiện tại đang là rẻ nhất trong số các nhà cung cấp VPS có uy tín ( 3.5$/tháng ).</li>
 <li>Ứng dụng Rails sẵn sàng để deploy.</li>
 </ul>
-<h1 id="bước-1-cài-đặt-nginx">Bước 1: Cài đặt Nginx</h1>
+<h2 id="bước-1-cài-đặt-nginx">Bước 1: Cài đặt Nginx</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span> <span class="nx">update</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span> <span class="nx">install</span> <span class="nx">nginx</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ sudo apt update
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ sudo apt install nginx
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="bước-2-cài-đặt-database-postgres">Bước 2: Cài đặt database (Postgres)</h1>
+</div><h2 id="bước-2-cài-đặt-database-postgres">Bước 2: Cài đặt database (Postgres)</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span> <span class="nx">update</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span> <span class="nx">install</span> <span class="nx">postgresql</span> <span class="nx">postgresql</span><span class="o">-</span><span class="nx">contrib</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ sudo apt update
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ sudo apt install postgresql postgresql-contrib
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Khi deploy Capistrano chỉ chạy lệnh db:migrate, vì vậy các bạn cần tạo sẵn database để deploy được suôn sẻ.</p>
@@ -146,8 +156,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="o">-</span><span class="nx">i</span> <span class="o">-</span><span class="nx">u</span> <span class="nx">postgres</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">psql</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ sudo -i -u postgres
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ psql
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Sau đó ta tạo cơ sở dữ liệu db_name (tên database được định nghĩ trong file database.yml)</p>
@@ -156,7 +166,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">postgres</span><span class="o">=</span><span class="err">$</span> <span class="nx">CREATE</span> <span class="nx">DATABASE</span> <span class="nx">db_name</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">postgres</span><span class="o">=</span>$ CREATE DATABASE db_name<span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Để chạy được lệnh db:migrate ta cần có database role, vì vậy ta tạo role như sau (username và password được định nghĩa trong file database.yml) :</p>
@@ -165,7 +175,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">postgres</span><span class="o">=</span><span class="err">$</span> <span class="nx">CREATE</span> <span class="nx">USER</span> <span class="nx">username</span> <span class="nx">WITH</span> <span class="nx">PASSWORD</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span> 
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">postgres</span><span class="o">=</span>$ CREATE USER username WITH PASSWORD <span class="s1">&#39;password&#39;</span><span class="p">;</span> 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Cấp quyền cho user để có thể thao tác với database</p>
@@ -174,17 +184,17 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">postgres</span><span class="o">=</span><span class="err">$</span> <span class="nx">GRANT</span> <span class="nx">ALL</span> <span class="nx">PRIVILEGES</span> <span class="nx">ON</span> <span class="nx">DATABASE</span> <span class="s1">&#39;db_name&#39;</span> <span class="nx">to</span> <span class="nx">username</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">postgres</span><span class="o">=</span>$ GRANT ALL PRIVILEGES ON DATABASE <span class="s1">&#39;db_name&#39;</span> to username<span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="bước-3-cài-đặt-rvm">Bước 3: Cài đặt RVM</h1>
+</div><h2 id="bước-3-cài-đặt-rvm">Bước 3: Cài đặt RVM</h2>
 <p>Đầu tiên ta phải cài đặt GPG keys</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">gpg</span> <span class="o">--</span><span class="nx">keyserver</span> <span class="nx">hkp</span><span class="o">://</span><span class="nx">pool</span><span class="o">.</span><span class="nx">sks</span><span class="o">-</span><span class="nx">keyservers</span><span class="o">.</span><span class="nx">net</span> <span class="o">--</span><span class="nx">recv</span><span class="o">-</span><span class="nx">keys</span> <span class="mi">409</span><span class="nx">B6B1796C275462A1703113804BB82D39DC0E3</span> <span class="mi">7</span><span class="nx">D2BAF1CF37B13E2069D6956105BD0E739499BDB</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Sau đó thực hiện các câu lệnh sau để cài đặt RVM</p>
@@ -197,11 +207,11 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">software</span><span class="o">-</span><span class="nx">properties</span><span class="o">-</span><span class="nx">common</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">add</span><span class="o">-</span><span class="nx">repository</span> <span class="o">-</span><span class="nx">y</span> <span class="nx">ppa</span><span class="o">:</span><span class="nx">rael</span><span class="o">-</span><span class="nx">gc</span><span class="o">/</span><span class="nx">rvm</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">update</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">apt</span><span class="o">-</span><span class="nx">get</span> <span class="nx">install</span> <span class="nx">rvm</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="k">echo</span> <span class="s1">&#39;source &#34;/etc/profile.d/rvm.sh&#34;&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="nx">bashrc</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ sudo apt-get install software-properties-common
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ sudo apt-add-repository -y ppa:rael-gc/rvm
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ sudo apt-get update
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ sudo apt-get install rvm
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ <span class="nb">echo</span> <span class="s1">&#39;source &#34;/etc/profile.d/rvm.sh&#34;&#39;</span> &gt;&gt; ~/.bashrc
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Cài đặt ruby 2.5.3</p>
@@ -211,18 +221,18 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">rvm</span> <span class="nx">install</span> <span class="mf">2.5</span><span class="o">.</span><span class="mi">3</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">rvm</span> <span class="k">use</span> <span class="mf">2.5</span><span class="o">.</span><span class="mi">3</span> <span class="o">--</span><span class="k">default</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ rvm install 2.5.3
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ rvm use 2.5.3 --default
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="bước-4-thiết-lập-ssh-keys">Bước 4: Thiết lập SSH keys</h1>
+</div><h2 id="bước-4-thiết-lập-ssh-keys">Bước 4: Thiết lập SSH keys</h2>
 <p>Khi deploy ứng dụng lên server ta cần clone code của ứng dụng từ Github (Bitbucket, Gitlab&hellip;). Để clone code mà không cần phải nhập mật khẩu (thông qua SSH protocol, không phải HTTP) ta cần tạo SSH key.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">ssh</span><span class="o">-</span><span class="nx">keygen</span> <span class="o">-</span><span class="nx">t</span> <span class="nx">rsa</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ ssh-keygen -t rsa
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Nếu không cần cài đặt gì đặc biết các bạn chỉ việc enter. Sau đó sẽ có 2 file được tạo ra tại thư mục <code>~/.ssh/</code>là <code>id_rsa.pub</code> và <code>id_rsa</code>. Sau đó bạn thêm <code>id_rsa.pub</code> vào deployment keys theo hướng dẫn sau <a href="https://docs.github.com/en/developers/overview/managing-deploy-keys#setup-2" target="_blank" rel="noopener noreffer ">(Cài đặt)</a></p>
@@ -233,8 +243,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">ssh</span> <span class="o">-</span><span class="nx">T</span> <span class="nx">git</span><span class="o">@</span><span class="nx">github</span><span class="o">.</span><span class="nx">com</span>
-</span></span><span class="line"><span class="cl"><span class="o">=&gt;</span> <span class="nx">Hi</span> <span class="nx">dinhduc0605</span><span class="o">!</span> <span class="nx">You</span><span class="err">&#39;</span><span class="nx">ve</span> <span class="nx">successfully</span> <span class="nx">authenticated</span><span class="p">,</span> <span class="nx">but</span> <span class="nx">GitHub</span> <span class="nx">does</span> <span class="k">not</span> <span class="nx">provide</span> <span class="nx">shell</span> <span class="nx">access</span><span class="o">.</span> 
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ ssh -T git@github.com
+</span></span><span class="line"><span class="cl"><span class="o">=</span>&gt; Hi dinhduc0605! You<span class="err">&#39;</span>ve successfully authenticated, but GitHub does not provide shell access. 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Nếu trên máy local của bạn chưa có ssh keys, bạn cũng làm như trên để tạo key mới. Sau đó thêm khoá công khai vào Authorized Keys file trên server.</p>
@@ -243,10 +253,10 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">cat</span> <span class="o">~/.</span><span class="nx">ssh</span><span class="o">/</span><span class="nx">id_rsa</span><span class="o">.</span><span class="nx">pub</span> <span class="o">|</span> <span class="nx">ssh</span> <span class="o">-</span><span class="nx">p</span> <span class="nx">your_port_num</span> <span class="nx">deploy</span><span class="o">@</span><span class="nx">your_server_ip</span> <span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cat ~/.ssh/id_rsa.pub <span class="p">|</span> ssh -p your_port_num deploy@your_server_ip <span class="s1">&#39;cat &gt;&gt; ~/.ssh/authorized_keys&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="bước-5-config-capistrano-và-nginx">Bước 5: Config Capistrano và Nginx</h1>
+</div><h2 id="bước-5-config-capistrano-và-nginx">Bước 5: Config Capistrano và Nginx</h2>
 <p>Đầu tiên ta thêm các gem sau vào group :development trong Gemfile:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -259,13 +269,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">group</span> <span class="o">:</span><span class="nx">development</span> <span class="k">do</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">gem</span> <span class="s1">&#39;capistrano&#39;</span><span class="p">,</span>         <span class="k">require</span><span class="o">:</span> <span class="k">false</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">gem</span> <span class="s1">&#39;capistrano-rvm&#39;</span><span class="p">,</span>     <span class="k">require</span><span class="o">:</span> <span class="k">false</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">gem</span> <span class="s1">&#39;capistrano-rails&#39;</span><span class="p">,</span>   <span class="k">require</span><span class="o">:</span> <span class="k">false</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">gem</span> <span class="s1">&#39;capistrano-bundler&#39;</span><span class="p">,</span> <span class="k">require</span><span class="o">:</span> <span class="k">false</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">gem</span> <span class="s1">&#39;capistrano3-puma&#39;</span><span class="p">,</span>   <span class="k">require</span><span class="o">:</span> <span class="k">false</span>
-</span></span><span class="line"><span class="cl"><span class="nx">end</span>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gem</span> <span class="s1">&#39;capistrano&#39;</span><span class="p">,</span>         <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gem</span> <span class="s1">&#39;capistrano-rvm&#39;</span><span class="p">,</span>     <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gem</span> <span class="s1">&#39;capistrano-rails&#39;</span><span class="p">,</span>   <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gem</span> <span class="s1">&#39;capistrano-bundler&#39;</span><span class="p">,</span> <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gem</span> <span class="s1">&#39;capistrano3-puma&#39;</span><span class="p">,</span>   <span class="nb">require</span><span class="p">:</span> <span class="kp">false</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Sử dụng bundler để cài đặt các gem đó</p>
@@ -274,7 +284,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">bundle</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ bundle
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Sau đó thực hiện lệnh sau để config Capistrano:</p>
@@ -283,7 +293,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">cap</span> <span class="nx">install</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cap install
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Các file sau tự động được tạo ra:</p>
@@ -315,24 +325,24 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># frozen_string_literal: true
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Load DSL and Setup Up Stages
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">require</span> <span class="s1">&#39;capistrano/setup&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="k">require</span> <span class="s1">&#39;capistrano/deploy&#39;</span>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># frozen_string_literal: true</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">require</span> <span class="s1">&#39;capistrano/rails&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="k">require</span> <span class="s1">&#39;capistrano/bundler&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="k">require</span> <span class="s1">&#39;capistrano/rvm&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Load DSL and Setup Up Stages</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;capistrano/setup&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;capistrano/deploy&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">require</span> <span class="s2">&#34;capistrano/scm/git&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">install_plugin</span> <span class="nx">Capistrano</span><span class="o">::</span><span class="na">SCM</span><span class="o">::</span><span class="na">Git</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;capistrano/rails&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;capistrano/bundler&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;capistrano/rvm&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">require</span> <span class="s1">&#39;capistrano/puma&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">install_plugin</span> <span class="nx">Capistrano</span><span class="o">::</span><span class="na">Puma</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s2">&#34;capistrano/scm/git&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">install_plugin</span> <span class="no">Capistrano</span><span class="o">::</span><span class="no">SCM</span><span class="o">::</span><span class="no">Git</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># Loads custom tasks from `lib/capistrano/tasks&#39; if you have any defined.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">Dir</span><span class="o">.</span><span class="nx">glob</span><span class="p">(</span><span class="s1">&#39;lib/capistrano/tasks/*.rake&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">each</span> <span class="p">{</span> <span class="o">|</span><span class="nx">r</span><span class="o">|</span> <span class="nx">import</span> <span class="nx">r</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">require</span> <span class="s1">&#39;capistrano/puma&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">install_plugin</span> <span class="no">Capistrano</span><span class="o">::</span><span class="no">Puma</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Loads custom tasks from `lib/capistrano/tasks&#39; if you have any defined.</span>
+</span></span><span class="line"><span class="cl"><span class="no">Dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;lib/capistrano/tasks/*.rake&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span> <span class="n">import</span> <span class="n">r</span><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Thay thế các thông số sau tương ứng với ứng dụng của mình. Phần còn lại thì giữ nguyên không đổi.</p>
@@ -350,16 +360,16 @@
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="c1"># frozen_string_literal: true
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl"><span class="c1"># Change these
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">server</span> <span class="s1">&#39;your_server_ip&#39;</span><span class="p">,</span> <span class="nx">port</span><span class="o">:</span> <span class="nx">your_port_num</span><span class="p">,</span> <span class="nx">roles</span><span class="o">:</span> <span class="p">[</span><span class="o">:</span><span class="nx">web</span><span class="p">,</span> <span class="o">:</span><span class="nx">app</span><span class="p">,</span> <span class="o">:</span><span class="nx">db</span><span class="p">],</span> <span class="nx">primary</span><span class="o">:</span> <span class="k">true</span>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl"><span class="c1"># frozen_string_literal: true</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="o">:</span><span class="nx">repo_url</span><span class="p">,</span>        <span class="s1">&#39;git@example.com:username/appname.git&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="o">:</span><span class="nx">application</span><span class="p">,</span>     <span class="s1">&#39;appname&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="o">:</span><span class="nx">user</span><span class="p">,</span>            <span class="s1">&#39;deploy&#39;</span>
-</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="o">:</span><span class="nx">puma_threads</span><span class="p">,</span>    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="nx">set</span> <span class="o">:</span><span class="nx">puma_workers</span><span class="p">,</span>    <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Change these</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="s1">&#39;your_server_ip&#39;</span><span class="p">,</span> <span class="ss">port</span><span class="p">:</span> <span class="n">your_port_num</span><span class="p">,</span> <span class="ss">roles</span><span class="p">:</span> <span class="o">[</span><span class="ss">:web</span><span class="p">,</span> <span class="ss">:app</span><span class="p">,</span> <span class="ss">:db</span><span class="o">]</span><span class="p">,</span> <span class="ss">primary</span><span class="p">:</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="ss">:repo_url</span><span class="p">,</span>        <span class="s1">&#39;git@example.com:username/appname.git&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="ss">:application</span><span class="p">,</span>     <span class="s1">&#39;appname&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="ss">:user</span><span class="p">,</span>            <span class="s1">&#39;deploy&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="ss">:puma_threads</span><span class="p">,</span>    <span class="o">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">16</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">set</span> <span class="ss">:puma_workers</span><span class="p">,</span>    <span class="mi">0</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Tiếp theo ta cần cấu hình nginx để lắng nghe các request từ port 80 và chuyển tới Puma socket. Tạo file nginx.conf tại thư mục config (thay thế server_username và appname tương ứng):</p>
@@ -399,41 +409,41 @@
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">upstream</span> <span class="nx">puma</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">server</span> <span class="nx">unix</span><span class="o">:///</span><span class="nx">home</span><span class="o">/</span><span class="nx">deploy</span><span class="o">/</span><span class="nx">apps</span><span class="o">/</span><span class="nx">appname</span><span class="o">/</span><span class="nx">shared</span><span class="o">/</span><span class="nx">tmp</span><span class="o">/</span><span class="nx">sockets</span><span class="o">/</span><span class="nx">appname</span><span class="o">-</span><span class="nx">puma</span><span class="o">.</span><span class="nx">sock</span><span class="p">;</span>
+<pre tabindex="0" class="chroma"><code class="language-ruby" data-lang="ruby"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">upstream</span> <span class="n">puma</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">server</span> <span class="ss">unix</span><span class="p">:</span><span class="sr">//</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">deploy</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">appname</span><span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">sockets</span><span class="o">/</span><span class="n">appname</span><span class="o">-</span><span class="n">puma</span><span class="o">.</span><span class="n">sock</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nx">server</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">listen</span> <span class="mi">80</span> <span class="nx">default_server</span> <span class="nx">deferred</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="c1"># server_name example.com;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
-</span></span><span class="line"><span class="cl">  <span class="nx">root</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">deploy</span><span class="o">/</span><span class="nx">apps</span><span class="o">/</span><span class="nx">appname</span><span class="o">/</span><span class="nx">current</span><span class="o">/</span><span class="k">public</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">access_log</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">deploy</span><span class="o">/</span><span class="nx">apps</span><span class="o">/</span><span class="nx">appname</span><span class="o">/</span><span class="nx">current</span><span class="o">/</span><span class="nx">log</span><span class="o">/</span><span class="nx">nginx</span><span class="o">.</span><span class="nx">access</span><span class="o">.</span><span class="nx">log</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">error_log</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">deploy</span><span class="o">/</span><span class="nx">apps</span><span class="o">/</span><span class="nx">appname</span><span class="o">/</span><span class="nx">current</span><span class="o">/</span><span class="nx">log</span><span class="o">/</span><span class="nx">nginx</span><span class="o">.</span><span class="nx">error</span><span class="o">.</span><span class="nx">log</span> <span class="nx">info</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">listen</span> <span class="mi">80</span> <span class="n">default_server</span> <span class="n">deferred</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># server_name example.com;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">location</span> <span class="o">^~</span> <span class="o">/</span><span class="nx">assets</span><span class="o">/</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">gzip_static</span> <span class="nx">on</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">expires</span> <span class="nx">max</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">add_header</span> <span class="nx">Cache</span><span class="o">-</span><span class="nx">Control</span> <span class="k">public</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">root</span> <span class="sr">/home/</span><span class="n">deploy</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">appname</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="kp">public</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">access_log</span> <span class="sr">/home/</span><span class="n">deploy</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">appname</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="n">access</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">error_log</span> <span class="sr">/home/</span><span class="n">deploy</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">appname</span><span class="o">/</span><span class="n">current</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">nginx</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">log</span> <span class="n">info</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">location</span> <span class="o">^~</span> <span class="sr">/assets/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">gzip_static</span> <span class="n">on</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">expires</span> <span class="n">max</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">add_header</span> <span class="no">Cache</span><span class="o">-</span><span class="no">Control</span> <span class="kp">public</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">try_files</span> <span class="nv">$uri</span><span class="o">/</span><span class="nx">index</span><span class="o">.</span><span class="nx">html</span> <span class="nv">$uri</span> <span class="o">@</span><span class="nx">puma</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">location</span> <span class="o">@</span><span class="nx">puma</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">proxy_set_header</span> <span class="nx">X</span><span class="o">-</span><span class="nx">Forwarded</span><span class="o">-</span><span class="k">For</span> <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">proxy_set_header</span> <span class="nx">Host</span> <span class="nv">$http_host</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">proxy_redirect</span> <span class="nx">off</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">try_files</span> <span class="vg">$uri</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span> <span class="vg">$uri</span> <span class="vi">@puma</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">location</span> <span class="vi">@puma</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="no">Forwarded</span><span class="o">-</span><span class="no">For</span> <span class="vg">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">proxy_set_header</span> <span class="no">Host</span> <span class="vg">$http_host</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">proxy_redirect</span> <span class="n">off</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nx">proxy_pass</span> <span class="nx">http</span><span class="o">://</span><span class="nx">puma</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">proxy_pass</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//</span><span class="n">puma</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="nx">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="o">/</span><span class="mf">500.</span><span class="nx">html</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">client_max_body_size</span> <span class="mi">10</span><span class="nx">M</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="nx">keepalive_timeout</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="o">/</span><span class="mi">500</span><span class="o">.</span><span class="n">html</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">client_max_body_size</span> <span class="mi">10</span><span class="n">M</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">keepalive_timeout</span> <span class="mi">10</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="bước-6-deploy-ứng-dụng">Bước 6: Deploy ứng dụng</h1>
+</div><h2 id="bước-6-deploy-ứng-dụng">Bước 6: Deploy ứng dụng</h2>
 <p>Các bạn tạo commit và push lên nhánh master như sau:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -442,9 +452,9 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">git</span> <span class="nx">add</span> <span class="o">-</span><span class="nx">A</span>
-</span></span><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">git</span> <span class="nx">commit</span> <span class="o">-</span><span class="nx">m</span> <span class="s2">&#34;Set up Puma, Nginx &amp; Capistrano&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">git</span> <span class="nx">push</span> <span class="nx">origin</span> <span class="nx">master</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git add -A
+</span></span><span class="line"><span class="cl">$ git commit -m <span class="s2">&#34;Set up Puma, Nginx &amp; Capistrano&#34;</span>
+</span></span><span class="line"><span class="cl">$ git push origin master
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Sau đó deploy lần đầu tiên với capistrano:</p>
@@ -453,7 +463,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">cap</span> <span class="nx">production</span> <span class="nx">deploy</span><span class="o">:</span><span class="nx">initial</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cap production deploy:initial
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Lệnh này sẽ tự động deploy ứng dụng của bạn lên server, cài đặt các gem cần thiết và khởi động puma server. Quá trình sẽ mất khoảng 5-15 phút.</p>
@@ -464,8 +474,8 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">rm</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">nginx</span><span class="o">/</span><span class="nx">sites</span><span class="o">-</span><span class="nx">enabled</span><span class="o">/</span><span class="k">default</span>
-</span></span><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">ln</span> <span class="o">-</span><span class="nx">nfs</span> <span class="s2">&#34;/home/server_username/apps/appname/current/config/nginx.conf&#34;</span> <span class="s2">&#34;/etc/nginx/sites-enabled/appname&#34;</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ sudo rm /etc/nginx/sites-enabled/default
+</span></span><span class="line"><span class="cl">deploy@vultr:~$ sudo ln -nfs <span class="s2">&#34;/home/server_username/apps/appname/current/config/nginx.conf&#34;</span> <span class="s2">&#34;/etc/nginx/sites-enabled/appname&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Khởi động lại Nginx:</p>
@@ -474,7 +484,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="nx">deploy</span><span class="o">@</span><span class="nx">vultr</span><span class="o">:~</span><span class="err">$</span> <span class="nx">sudo</span> <span class="nx">service</span> <span class="nx">nginx</span> <span class="nx">restart</span> 
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">deploy@vultr:~$ sudo service nginx restart 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Tới đây các bạn đã có thể truy cập website của mình thông qua IP của server rồi.
@@ -484,10 +494,10 @@ Với các lần deploy tiếp theo các bạn chỉ cần chạy lệnh sau là
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">cap</span> <span class="nx">production</span> <span class="nx">deploy</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ cap production deploy
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="tổng-kết">Tổng kết</h1>
+</div><h2 id="tổng-kết">Tổng kết</h2>
 <p>Như vậy mình đã hướng dẫn các bạn deploy ứng dụng Rails lên server Ubuntu 18.04 với Puma, Nginx và Capistrano. Hi vọng các bạn thành công!!!
 Với các bạn có server dụng lượng bộ nhớ thấp khi deploy có khả năng bị lỗi thì có thể tham khảo bài viết sau:</p>
 <ul>
