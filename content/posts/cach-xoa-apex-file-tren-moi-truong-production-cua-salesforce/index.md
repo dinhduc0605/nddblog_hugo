@@ -1,6 +1,7 @@
 +++
 title = 'Cách xoá Apex file trên môi trường production của Salesforce'
 date = 2024-03-16T01:15:53+09:00
+tags = ["Salesforce", "Apex Class"]
 +++
 Bạn đã từng phải đối mặt với việc cần xoá một file Apex Class trên môi trường Production của Salesforce mà không biết cách thực hiện? Trong bài viết này, mình sẽ chia sẻ về cách thức xoá một Apex Class một cách an toàn và hiệu quả bằng cách sử dụng công cụ Workbench 💪
 

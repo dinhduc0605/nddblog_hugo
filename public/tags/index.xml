@@ -4,5 +4,21 @@
         <link>https://nddblog.com/tags/</link>
         <description>Tags - Tag - NDDBlog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
-            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><atom:link href="https://nddblog.com/tags/" rel="self" type="application/rss+xml" /></channel>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</lastBuildDate><atom:link href="https://nddblog.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Apex Class</title>
+    <link>https://nddblog.com/tags/apex-class/</link>
+    <pubDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>https://nddblog.com/tags/apex-class/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Salesforce</title>
+    <link>https://nddblog.com/tags/salesforce/</link>
+    <pubDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>https://nddblog.com/tags/salesforce/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
 </rss>

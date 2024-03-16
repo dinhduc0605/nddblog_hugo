@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Apex Class - Tag - NDDBlog</title>
+        <link>https://nddblog.com/tags/apex-class/</link>
+        <description>Apex Class - Tag - NDDBlog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>dinhduc0605@gmail.com (Dinh Duc)</managingEditor>
+            <webMaster>dinhduc0605@gmail.com (Dinh Duc)</webMaster><lastBuildDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</lastBuildDate><atom:link href="https://nddblog.com/tags/apex-class/" rel="self" type="application/rss+xml" /><item>
+    <title>Cách xoá Apex file trên môi trường production của Salesforce</title>
+    <link>https://nddblog.com/posts/cach-xoa-apex-file-tren-moi-truong-production-cua-salesforce/</link>
+    <pubDate>Sat, 16 Mar 2024 01:15:53 &#43;0900</pubDate>
+    <author>Dinh Duc</author>
+    <guid>https://nddblog.com/posts/cach-xoa-apex-file-tren-moi-truong-production-cua-salesforce/</guid>
+    <description><![CDATA[Bạn đã từng phải đối mặt với việc cần xoá một file Apex Class trên môi trường Production của Salesforce mà không biết cách thực hiện? Trong bài viết này, mình sẽ chia sẻ về cách thức xoá một Apex Class một cách an toàn và hiệu quả bằng cách sử dụng công cụ Workbench 💪
+Workbench là gì? Workbench là một công cụ mạnh mẽ giúp bạn thực hiện các thao tác quản lý dữ liệu và metadata trên các môi trường Salesforce một cách dễ dàng thông qua Force.]]></description>
+</item>
+</channel>
+</rss>

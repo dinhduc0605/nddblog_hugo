@@ -45,10 +45,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     pre = ""
     # you can add extra information after the name (HTML format is supported), such as icons
     post = ""
-    name = "Posts"
+    name = "Bài viết"
     url = "/posts/"
     # title will be shown when you hover on this menu link
-    title = ""
+    title = "Bài viết"
   [[menu.main]]
     weight = 2
     identifier = "tags"
@@ -56,23 +56,15 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     post = ""
     name = "Tags"
     url = "/tags/"
-    title = ""
+    title = "Tags"
   [[menu.main]]
     weight = 3
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "Categories"
-    url = "/categories/"
-    title = ""
-  [[menu.main]]
-    weight = 4
     identifier = "about"
     pre = ""
     post = ""
-    name = "About"
+    name = "Giới thiệu"
     url = "/about/"
-    title = ""
+    title = "Giới thiệu"
 
 [params]
   # site default theme ["auto", "light", "dark"]
